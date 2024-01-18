@@ -1,0 +1,53 @@
+.container {
+  max-height: 40px;
+}
+
+.secontContainer {
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #e7dff8;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.secontContainerNotFocus {
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.clientContainerNotFocus {
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid #79757f;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.thirdContainer {
+  display: flex;
+  padding: 6px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.textButton {
+  color: #1d192b;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+}

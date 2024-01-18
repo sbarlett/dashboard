@@ -1,0 +1,68 @@
+.tableContainer {
+  border-radius: 10px;
+  background-color: #e6e1e6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow-x: hidden;
+  justify-content: flex-start;
+}
+
+.textTable {
+  color: #48454e;
+  margin-top: 15px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+}
+
+.containerColum {
+  border-radius: 10px;
+  background-color: #e6e1e6;
+  gap: 10px;
+  /* margin-bottom: 30px; */
+  display: flex;
+  max-width: 120px;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  justify-content: flex-start;
+  margin: 0px;
+
+}
+
+.tableContainerColum {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tablesWrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.columTextDates {
+  margin-top: 4px;
+}
+
+.oneTable {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.columTextDates7D {
+  margin-top: -4px;
+}
+.tableContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0 auto;
+}

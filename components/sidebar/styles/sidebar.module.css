@@ -1,0 +1,25 @@
+.sidebarContainer {
+  padding: 16px 0px 8px 25px;
+  height: 100%;
+}
+
+.sidebarButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 323px;
+}
+
+.buttonContainer {
+  display: flex;
+  padding: 5px;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: 1.5px solid #644bba;
+}
+
+.arrow {
+  transform: rotate(180deg);
+}

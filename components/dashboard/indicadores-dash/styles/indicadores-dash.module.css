@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+.containerMobile {
+  display: flex;
+}
+
+.cont {
+  display: flex;
+  flex-direction: column;
+}
+
+.indicatorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.indicadtorRed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  width: 15px;
+  height: 15px;
+  opacity: 0.5;
+}
+
+.indicadtorOrange {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eb7635;
+  width: 15px;
+  height: 15px;
+}
+
+.indicadtorViolet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #358deb;
+  width: 15px;
+  height: 15px;
+}
+.indicatorGreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2dcf5a;
+  width: 15px;
+  height: 15px;
+  opacity: 0.5;
+}
+
+.textIndicator {
+  opacity: 0.5;
+  margin: 0;
+}

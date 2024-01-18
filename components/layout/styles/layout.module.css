@@ -1,0 +1,9 @@
+.fullContainer {
+    max-width: 1512px;
+    margin: 0 auto;
+}
+
+.layoutContainer {
+    width: 100%;
+    margin-inline: 5px;
+}

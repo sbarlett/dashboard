@@ -1,0 +1,15 @@
+.grow {
+  flex-grow: 1;
+  margin-left: 12px;
+}
+
+.menuButton {
+  color: "#5e35b1";
+  width: 34px;
+  cursor: "pointer";
+  height: 34px;
+  font-size: 1.2rem;
+  background: "#ede7f6";
+  transition: "all .2s ease-in-out";
+  border-radius: 8px;
+}

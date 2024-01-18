@@ -1,0 +1,23 @@
+.verDetallesContainer {
+  display: flex;
+  padding: 10px 0px 10px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.filterContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.textVerDetalles {
+  color: #644bba;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+}

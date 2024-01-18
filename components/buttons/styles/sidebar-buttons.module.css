@@ -1,0 +1,40 @@
+.buttonFocus {
+  display: flex;
+  padding: 7px 10px;
+  align-items: center;
+  gap: 3px;
+  border-radius: 50px;
+  background: #644bba;
+  cursor: pointer;
+}
+.buttonNotFocus {
+  display: flex;
+  padding: 7px 10px;
+  align-items: center;
+  gap: 3px;
+  border-radius: 50px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.textButton {
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+}
+
+.textButtonNotFocus {
+  margin: 0 auto;
+  color: #644bba;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+}

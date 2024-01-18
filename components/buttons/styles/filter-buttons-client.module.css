@@ -1,0 +1,9 @@
+.divider{
+    width: 682px;
+}
+
+
+.buttonContiner {
+    display: flex;
+    gap: 10px;
+}
