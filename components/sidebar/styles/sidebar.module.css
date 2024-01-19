@@ -10,6 +10,11 @@
   width: 323px;
 }
 
+.sidebarCardsContainer{
+  width: 323px;
+
+}
+
 .buttonContainer {
   display: flex;
   padding: 5px;
@@ -22,4 +27,14 @@
 
 .arrow {
   transform: rotate(180deg);
+}
+
+@media only screen and (max-width: 1200px) {
+  .sidebarMobileContainer {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
 }

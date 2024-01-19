@@ -10,6 +10,7 @@ import SideBarButtons from "@/components/buttons/sidebar/sidebar-buttons";
 import { useDashboardContext } from "@/store/global";
 import ButtonsDataMobile from "@/components/buttons/filter-buttons/filter-buttons-mobile";
 import { ButtonsProp } from "@/utils/types";
+import { Grid } from "@material-ui/core";
 
 const ButtonsWrapper = () => {
   const { updateSelectedGrafic } = useDashboardContext();
@@ -26,15 +27,19 @@ const ButtonsWrapper = () => {
     <>
       {!isMobile ? (
         <>
-          <Container className={styles.filterDateContainer}>
+          <Grid item className={styles.filterDateContainer}>
             <FilterButtonsDate />
-          </Container>
-          <Container className={styles.filterButtons7DContainer}>
+          </Grid>
+          <Grid item className={styles.filterButtons7DContainer}>
             <FilterButtons7D />
-          </Container>
-          <Container className={styles.filterClientContainer}>
+          </Grid>
+          <Grid
+            item
+            className={styles.filterClientContainer}
+            style={{ display: "flex" }}
+          >
             <FilterButtonsClient />
-          </Container>
+          </Grid>
         </>
       ) : (
         <>

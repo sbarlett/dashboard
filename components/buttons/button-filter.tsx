@@ -10,6 +10,7 @@ const ButtonFilter: React.FC<ButtonProps> = ({
   isFocused,
   isClientButton,
 }: ButtonProps) => {
+  const buttons = ['Clientes' , 'Transacciones' , 'Dinero' , 'Cashback']
   return (
     <div className={styles.container} onClick={onClick}>
       <div
@@ -22,7 +23,7 @@ const ButtonFilter: React.FC<ButtonProps> = ({
         }
       >
         <div className={styles.thirdContainer}>
-          {isFocused && (title === "Clientes" || title === "Transacciones") && (
+          {isFocused && buttons.includes(title) && (
             <Tilde />
           )}
           {title === "Personalizado" && <Calendario />}

@@ -80,3 +80,9 @@ export interface DrawerComponentProps extends WithStyles {
 export interface ToolbarComponentProps {
   openDrawerHandler: MouseEventHandler<HTMLButtonElement>;
 }
+
+export interface DataOperation {
+  data: any;
+  isError: boolean;
+  isLoading: boolean;
+}

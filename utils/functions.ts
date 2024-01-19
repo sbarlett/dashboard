@@ -1,6 +1,9 @@
 import { getDaysActuallyMonth } from "@/components/charts/utils/functions";
 import { transsaction } from "./mock";
 import { RenderedInfo, Transaction } from "./types";
+import React from "react";
+import axios from "axios";
+import { useQuery } from "react-query";
 
 export const listButtonsSideBar = [
   {
@@ -193,14 +196,7 @@ export const months: string[] = [
   "Noviembre",
   "Diciembre",
 ];
-export const hoursDay = [
-  "00:00 - 04:00",
-  "04:00 - 08:00",
-  "08:00 - 12:00",
-  "12:00 - 16:00",
-  "16:00 - 20:00",
-  "20:00 - 00:00",
-];
+
 
 export const normalizeFilterDates = (date: string) => {
   const map = new Map();
@@ -341,3 +337,18 @@ function obtenerInformacionRenderizada(
 
   return informacionRenderizada;
 }
+
+
+
+export const asyncFetchApi = async (path:string) => {
+    return await axios(path)
+      .then((res) => {
+        return { error: null, data: res.data };
+      })
+      .catch((error) => {
+        return { error: error, data: null };
+      });
+};
+
+
+

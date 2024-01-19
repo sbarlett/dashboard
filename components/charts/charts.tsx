@@ -1,5 +1,4 @@
 import React from "react";
-import { BarChart } from "@mui/x-charts/BarChart";
 import { axisClasses } from "@mui/x-charts";
 import { validateDate } from "@/utils/functions";
 import { useDashboardContext } from "@/store/global";
@@ -13,7 +12,6 @@ import {
   getValueAllData,
   getValueCustomers,
   getValueTransaccion,
-  getOperations,
 } from "./utils/functions";
 import { DataOperationProps } from "@/utils/types";
 import { Grid } from "@mui/material";
@@ -26,106 +24,137 @@ const ChartComponent: React.FC<DataOperationProps> = ({
     useDashboardContext();
   const isMobile = useIsMobile();
 
-  const valueFormatterCount = (value: number) => `${value}`;
-  const valueFormatterAmount = (value: number) => `${value}K`;
-
-  const chartSetting = {
-    yAxis: [
-      {
-        label: "",
-      },
-    ],
-    maxWidth: 1042,
-    height: 456,
-    sx: {
-      [`.${axisClasses.left} .${axisClasses.label}`]: {
-        transform: "translate(-20px, 0)",
-      },
-    },
-  };
-
   return (
     <Grid item xs={12} lg={12}>
       {selectedGrafic === "Gráfico" ? (
         <>
-          {selectedClient === "Transacciones" ? (
-            <BarChart
-              dataset={getOperations(data, selectedDate, selectedDay)}
-              skipAnimation
-              xAxis={[
-                {
-                  data:
-                    selectedDate === "7D" && selectedDay !== "Todo"
-                      ? [selectedDay]
-                      : validateDate(selectedDate),
-                  scaleType: "band",
-                },
-              ]}
-              yAxis={[
-                {
-                  data: "totalAmountTransactions",
-                  scaleType: "band",
-                },
-              ]}
-              series={[
-                {
-                  dataKey: "totalAmountTransactions",
-                  label: "Transacciones",
-                  valueFormatter: valueFormatterAmount,
-                  color: "#358DEB",
-                  type: "bar",
-                  data: getValueTransaccion(data, selectedDate, selectedDay),
-                },
-              ]}
-              {...chartSetting}
-            />
-          ) : (
-            <BarChart
-              dataset={getOperations(data, selectedDate, selectedDay)}
-              skipAnimation
-              xAxis={[
-                {
-                  data:
-                    selectedDate === "7D" && selectedDay !== "Todo"
-                      ? [selectedDay]
-                      : validateDate(selectedDate),
-                  scaleType: "band",
-                },
-              ]}
-              yAxis={[
-                {
-                  data: "totalAmountTransactions",
-                  scaleType: "band",
-                },
-                {
-                  data: "customersBuyByDay",
-                  scaleType: "band",
-                },
-              ]}
-              series={[
-                {
-                  dataKey: "customersBuyByDay",
-                  // label: "Clientes nuevos",
-                  valueFormatter: valueFormatterCount,
-                  color: "#EB7635",
-                  data: getValueCustomers(data, selectedDate, selectedDay),
-                },
-                {
-                  dataKey: "totalAmountTransactions",
-                  // label: "Transacciones",
-                  valueFormatter: valueFormatterAmount,
-                  // color: "#358DEB",
+          {selectedClient === "Transacciones" || selectedClient === "Dinero" ? (
+            <Box sx={{ width: "100%", maxWidth: 1042 }}>
+              <ResponsiveChartContainer
+                xAxis={[
+                  {
+                    scaleType: "band",
+                    data:
+                      selectedDate === "7D" && selectedDay !== "Todo"
+                        ? [selectedDay]
+                        : validateDate(selectedDate),
+                    id: "customersBuyByDay",
+                    label: "Clientes",
+                  },
+                ]}
+                yAxis={[
+                  { id: "totalAmountTransactions" },
+                  { id: "customersBuyByDay" },
+                ]}
+                dataset={getValueAllData(data, selectedDate, selectedDay)}
+                series={[
+                  {
+                    type: "line",
+                    id: "totalAmountTransactions",
+                    yAxisKey: "totalAmountTransactions",
+                    data: getValueTransaccion(data, selectedDate, selectedDay),
+                    color: "trasparent",
+                  },
 
-                  data: getValueTransaccion(data, selectedDate, selectedDay),
-                },
-              ]}
-              {...chartSetting}
-            />
+                  {
+                    type: "bar",
+                    id: "totalAmountTransactions",
+                    yAxisKey: "totalAmountTransactions",
+                    data: getValueTransaccion(data, selectedDate, selectedDay),
+                    color: "#358DEB",
+                  },
+                ]}
+                height={400}
+                margin={{ left: 70, right: 70 }}
+                sx={{
+                  [`.${axisClasses.left} .${axisClasses.label}`]: {
+                    transform: "translate(-25px, 0)",
+                  },
+                  [`.${axisClasses.right} .${axisClasses.label}`]: {
+                    transform: "translate(30px, 0)",
+                  },
+                }}
+              >
+                <BarPlot />
+                <LinePlot />
+                <ChartsXAxis axisId="customersBuyByDay" label="" />
+                <ChartsYAxis
+                  axisId="totalAmountTransactions"
+                  label="Transacciones"
+                />
+              </ResponsiveChartContainer>
+            </Box>
+          ) : (
+            <Box sx={{ width: "100%", maxWidth: 1042 }}>
+              <ResponsiveChartContainer
+                xAxis={[
+                  {
+                    scaleType: "band",
+                    data:
+                      selectedDate === "7D" && selectedDay !== "Todo"
+                        ? [selectedDay]
+                        : validateDate(selectedDate),
+                    id: "customersBuyByDay",
+                    label: "Clientes",
+                  },
+                ]}
+                yAxis={[
+                  { id: "totalAmountTransactions" },
+                  { id: "customersBuyByDay" },
+                ]}
+                dataset={getValueAllData(data, selectedDate, selectedDay)}
+                series={[
+                  {
+                    type: "line",
+                    id: "totalAmountTransactions",
+                    yAxisKey: "totalAmountTransactions",
+                    data: getValueTransaccion(data, selectedDate, selectedDay),
+                    color: "trasparent",
+                  },
+                  {
+                    type: "line",
+                    id: "customersBuyByDay",
+                    yAxisKey: "customersBuyByDay",
+                    data: getValueCustomers(data, selectedDate, selectedDay),
+                    color: "trasparent",
+                  },
+                  {
+                    type: "bar",
+                    id: "totalAmountTransactions",
+                    yAxisKey: "totalAmountTransactions",
+                    data: getValueTransaccion(data, selectedDate, selectedDay),
+                    color: "#358DEB",
+                  },
+                  {
+                    type: "bar",
+                    id: "customersBuyByDay",
+                    yAxisKey: "customersBuyByDay",
+                    data: getValueCustomers(data, selectedDate, selectedDay),
+                    color: "#EB7635",
+                  },
+                ]}
+                height={400}
+                margin={{ left: 70, right: 70 }}
+                sx={{
+                  [`.${axisClasses.left} .${axisClasses.label}`]: {
+                    transform: "translate(-25px, 0)",
+                  },
+                  [`.${axisClasses.right} .${axisClasses.label}`]: {
+                    transform: "translate(30px, 0)",
+                  },
+                }}
+              >
+                <BarPlot />
+                <LinePlot />
+                <ChartsXAxis axisId="customersBuyByDay" label="" />
+                <ChartsYAxis axisId="totalAmountTransactions" label="" />
+              </ResponsiveChartContainer>
+            </Box>
           )}
         </>
       ) : (
         <>
-          {selectedClient === "Clientes" ? (
+          {selectedClient === "Clientes" || selectedClient === "Dinero" ? (
             <Box sx={{ width: "100%", maxWidth: 1042 }}>
               <ResponsiveChartContainer
                 xAxis={[

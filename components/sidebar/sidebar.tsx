@@ -38,7 +38,7 @@ const SideBarComponent = () => {
   const informacionRenderizada = operacionesProximosTresMeses(transsaction);
   const isMobile = useIsMobile();
   return (
-    <div className={styles.sidebarContainer}>
+    <div className={!isMobile ? styles.sidebarContainer : styles.sidebarMobileContainer}>
       {!isMobile && (
         <div className={styles.sidebarButtonContainer}>
           <div className={styles.buttonContainer}>
@@ -61,7 +61,7 @@ const SideBarComponent = () => {
         </div>
       )}
       {isTarget && (
-        <div>
+        <div className={styles.sidebarCardsContainer}>
           {informacionRenderizada.map((item, index) => (
             <TargetsSideBarComponent key={index} data={item} />
           ))}

@@ -4,8 +4,11 @@
   align-items: center;
   border-radius: 8px;
   width: 100px;
+  padding: 0;
   background: transparent;
-  border: 1px solid #644bba;
+  border: 2px solid #644bba;
+  color: #644bba;
+  font-weight: 600;
 }
 .buttonContainer:nth-child(2) div button div {
   z-index: 1;
