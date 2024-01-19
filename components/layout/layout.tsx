@@ -9,7 +9,7 @@ function WrapperContainer({ children }: { children: any }) {
 
   return (
     <div className={styles.fullContainer}>
-      <div className={isMobile && styles.layoutContainer}>
+      <div className={isMobile ? styles.layoutContainer: null}>
         {isMobile ? <NavMobile /> : <MenuNavBar />}
         {children}
       </div>

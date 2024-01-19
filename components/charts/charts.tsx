@@ -1,6 +1,6 @@
 import React from "react";
 import { axisClasses } from "@mui/x-charts";
-import { validateDate } from "@/utils/functions";
+import { filterAndAccumulateByYear, validateDate } from "@/utils/functions";
 import { useDashboardContext } from "@/store/global";
 import Box from "@mui/material/Box";
 import { ResponsiveChartContainer } from "@mui/x-charts/ResponsiveChartContainer";
@@ -86,69 +86,240 @@ const ChartComponent: React.FC<DataOperationProps> = ({
             </Box>
           ) : (
             <Box sx={{ width: "100%", maxWidth: 1042 }}>
-              <ResponsiveChartContainer
-                xAxis={[
-                  {
-                    scaleType: "band",
-                    data:
-                      selectedDate === "7D" && selectedDay !== "Todo"
-                        ? [selectedDay]
-                        : validateDate(selectedDate),
-                    id: "customersBuyByDay",
-                    label: "Clientes",
-                  },
-                ]}
-                yAxis={[
-                  { id: "totalAmountTransactions" },
-                  { id: "customersBuyByDay" },
-                ]}
-                dataset={getValueAllData(data, selectedDate, selectedDay)}
-                series={[
-                  {
-                    type: "line",
-                    id: "totalAmountTransactions",
-                    yAxisKey: "totalAmountTransactions",
-                    data: getValueTransaccion(data, selectedDate, selectedDay),
-                    color: "trasparent",
-                  },
-                  {
-                    type: "line",
-                    id: "customersBuyByDay",
-                    yAxisKey: "customersBuyByDay",
-                    data: getValueCustomers(data, selectedDate, selectedDay),
-                    color: "trasparent",
-                  },
-                  {
-                    type: "bar",
-                    id: "totalAmountTransactions",
-                    yAxisKey: "totalAmountTransactions",
-                    data: getValueTransaccion(data, selectedDate, selectedDay),
-                    color: "#358DEB",
-                  },
-                  {
-                    type: "bar",
-                    id: "customersBuyByDay",
-                    yAxisKey: "customersBuyByDay",
-                    data: getValueCustomers(data, selectedDate, selectedDay),
-                    color: "#EB7635",
-                  },
-                ]}
-                height={400}
-                margin={{ left: 70, right: 70 }}
-                sx={{
-                  [`.${axisClasses.left} .${axisClasses.label}`]: {
-                    transform: "translate(-25px, 0)",
-                  },
-                  [`.${axisClasses.right} .${axisClasses.label}`]: {
-                    transform: "translate(30px, 0)",
-                  },
-                }}
-              >
-                <BarPlot />
-                <LinePlot />
-                <ChartsXAxis axisId="customersBuyByDay" label="" />
-                <ChartsYAxis axisId="totalAmountTransactions" label="" />
-              </ResponsiveChartContainer>
+              {selectedDate === "YTD/YTG" ? (
+                <>
+                  <Box sx={{ display: "flex" }}>
+                    {!isMobile && (
+                      <ResponsiveChartContainer
+                        xAxis={[
+                          {
+                            scaleType: "band",
+                            data: ["YTD/YTG"],
+                            id: "customersBuyByDay",
+                            label: "Clientes",
+                          },
+                        ]}
+                        yAxis={[{ id: "totalAmountTransactions" }]}
+                        dataset={getValueAllData(
+                          data,
+                          selectedDate,
+                          selectedDay
+                        ).slice(0, 1)}
+                        series={[
+                          {
+                            type: "bar",
+                            data: getValueAllData(data, selectedDate).map(
+                              (dato: any) => {
+                                const operationDate = new Date(
+                                  dato?.date
+                                ).getFullYear();
+
+                                return Number(
+                                  filterAndAccumulateByYear(
+                                    data,
+                                    operationDate
+                                  ).toLocaleString("eu")
+                                );
+                              }
+                            ),
+
+                            color: "#EB3535",
+                          },
+                          {
+                            type: "bar",
+                            data: getValueAllData(data, selectedDate).map(
+                              (dato: any) => {
+                                const operationDate =
+                                  new Date(dato?.date).getFullYear() + 1;
+
+                                return Number(
+                                  filterAndAccumulateByYear(
+                                    data,
+                                    operationDate
+                                  ).toLocaleString("eu")
+                                );
+                              }
+                            ),
+                            color: "#7A35EB",
+                          },
+                        ]}
+                        height={400}
+                        margin={{ left: 70, right: 70 }}
+                        sx={{
+                          [`.${axisClasses.left} .${axisClasses.label}`]: {
+                            transform: "translate(-25px, 0)",
+                          },
+                          [`.${axisClasses.right} .${axisClasses.label}`]: {
+                            transform: "translate(30px, 0)",
+                          },
+                        }}
+                      >
+                        <BarPlot />
+                        <LinePlot />
+                        <ChartsXAxis
+                          axisId="customersBuyByDay"
+                          label=""
+                          disableLine={true}
+                        />
+                        <ChartsYAxis
+                          axisId="totalAmountTransactions"
+                          label=""
+                          disableLine={true}
+                        />
+                      </ResponsiveChartContainer>
+                    )}
+                    <ResponsiveChartContainer
+                      xAxis={[
+                        {
+                          scaleType: "band",
+                          data: ["YTD/YTG"],
+                          id: "customersBuyByDay",
+                          label: "Clientes",
+                        },
+                      ]}
+                      yAxis={[{ id: "totalAmountTransactions" }]}
+                      dataset={getValueAllData(
+                        data,
+                        selectedDate,
+                        selectedDay
+                      ).slice(0, 1)}
+                      series={[
+                        {
+                          type: "bar",
+                          data: getValueAllData(data, selectedDate).map(
+                            (dato: any) => {
+                              const operationDate = new Date(
+                                dato?.date
+                              ).getFullYear();
+
+                              return Number(
+                                filterAndAccumulateByYear(
+                                  data,
+                                  operationDate
+                                ).toLocaleString("eu")
+                              );
+                            }
+                          ),
+
+                          color: "#EB3535",
+                        },
+                        {
+                          type: "bar",
+                          data: getValueAllData(data, selectedDate).map(
+                            (dato: any) => {
+                              const operationDate =
+                                new Date(dato?.date).getFullYear() + 1;
+
+                              return Number(
+                                filterAndAccumulateByYear(
+                                  data,
+                                  operationDate
+                                ).toLocaleString("eu")
+                              );
+                            }
+                          ),
+                          color: "#7A35EB",
+                        },
+                      ]}
+                      height={400}
+                      margin={{ left: 70, right: 70 }}
+                      sx={{
+                        [`.${axisClasses.left} .${axisClasses.label}`]: {
+                          transform: "translate(-25px, 0)",
+                        },
+                        [`.${axisClasses.right} .${axisClasses.label}`]: {
+                          transform: "translate(30px, 0)",
+                        },
+                      }}
+                    >
+                      <BarPlot />
+                      <LinePlot />
+                      <ChartsXAxis
+                        axisId="customersBuyByDay"
+                        label=""
+                        disableLine={true}
+                      />
+                      <ChartsYAxis
+                        axisId="totalAmountTransactions"
+                        label=""
+                        disableLine={true}
+                      />
+                    </ResponsiveChartContainer>
+                  </Box>
+                </>
+              ) : (
+                <ResponsiveChartContainer
+                  xAxis={[
+                    {
+                      scaleType: "band",
+                      data:
+                        selectedDate === "7D" && selectedDay !== "Todo"
+                          ? [selectedDay]
+                          : validateDate(selectedDate),
+                      id: "customersBuyByDay",
+                      label: "Clientes",
+                    },
+                  ]}
+                  yAxis={[
+                    { id: "totalAmountTransactions" },
+                    { id: "customersBuyByDay" },
+                  ]}
+                  dataset={getValueAllData(data, selectedDate, selectedDay)}
+                  series={[
+                    {
+                      type: "line",
+                      id: "totalAmountTransactions",
+                      yAxisKey: "totalAmountTransactions",
+                      data: getValueTransaccion(
+                        data,
+                        selectedDate,
+                        selectedDay
+                      ),
+                      color: "trasparent",
+                    },
+                    {
+                      type: "line",
+                      id: "customersBuyByDay",
+                      yAxisKey: "customersBuyByDay",
+                      data: getValueCustomers(data, selectedDate, selectedDay),
+                      color: "trasparent",
+                    },
+                    {
+                      type: "bar",
+                      id: "totalAmountTransactions",
+                      yAxisKey: "totalAmountTransactions",
+                      data: getValueTransaccion(
+                        data,
+                        selectedDate,
+                        selectedDay
+                      ),
+                      color: "#358DEB",
+                    },
+                    {
+                      type: "bar",
+                      id: "customersBuyByDay",
+                      yAxisKey: "customersBuyByDay",
+                      data: getValueCustomers(data, selectedDate, selectedDay),
+                      color: "#EB7635",
+                    },
+                  ]}
+                  height={400}
+                  margin={{ left: 70, right: 70 }}
+                  sx={{
+                    [`.${axisClasses.left} .${axisClasses.label}`]: {
+                      transform: "translate(-25px, 0)",
+                    },
+                    [`.${axisClasses.right} .${axisClasses.label}`]: {
+                      transform: "translate(30px, 0)",
+                    },
+                  }}
+                >
+                  <BarPlot />
+                  <LinePlot />
+                  <ChartsXAxis axisId="customersBuyByDay" label="" />
+                  <ChartsYAxis axisId="totalAmountTransactions" label="" />
+                </ResponsiveChartContainer>
+              )}
             </Box>
           )}
         </>
@@ -240,6 +411,8 @@ const ChartComponent: React.FC<DataOperationProps> = ({
                       selectedDay !== "Todo" &&
                       !isMobile
                         ? [selectedDay]
+                        : selectedDate === "YTD/YTG"
+                        ? ["YTD/YTG"]
                         : validateDate(selectedDate),
                     id: "customersBuyByDay",
                     label: "Dates",

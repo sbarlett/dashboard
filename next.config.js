@@ -11,12 +11,12 @@ module.exports = withTM({
   async headers() {
     return [
       {
-        source: "/api/data",
+        source: "/api/:path",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "false" },
           {
             key: "Access-Control-Allow-Origin",
-            value:"*"
+            value: "*",
           },
           {
             key: "Access-Control-Allow-Methods",
@@ -26,11 +26,6 @@ module.exports = withTM({
             key: "Access-Control-Allow-Headers",
             value:
               "Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date",
-          },
-          {
-            key: "Content-Security-Policy",
-            value:
-              "https://api-serveless-vercel-jqryn2hrn-sbaletta23.vercel.app/api/data https://api-serveless-vercel-jqryn2hrn-sbaletta23.vercel.app",
           },
         ],
       },

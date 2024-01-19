@@ -7,10 +7,10 @@ import SideBarComponent from "../sidebar/sidebar";
 import ExportComponent from "../buttons/filter-buttons/button-export";
 import useIsMobile from "@/hooks/useMobile";
 import ClientTable from "../table/table";
-import IndicadoresDash from "./indicadores-dash/indicadores-dash";
 import { useFetchApiCall } from "@/hooks/useFetchApiCall";
-import { transsaction } from "@/utils/mock";
 import Spinner from "../spinner/spinner";
+import Indicators from "./indicadores-dash/indicadores-dash";
+import { transsaction } from "@/utils/mock";
 
 const DashboardComponent = () => {
   const isMobile = useIsMobile();
@@ -22,7 +22,7 @@ const DashboardComponent = () => {
           maxWidth="xl"
           className={!isMobile ? styles.dashboardContainer : styles.dashMobile}
         >
-          <div className={styles.backgroundContainer}>
+          <Grid className={styles.backgroundContainer}>
             <Grid container spacing={2}>
               <Grid
                 item
@@ -41,7 +41,7 @@ const DashboardComponent = () => {
                   marginTop={!isMobile && "30px"}
                 >
                   <ChartComponent data={transsaction} />
-                  <IndicadoresDash />
+                  <Indicators />
                 </Grid>
                 <Grid item display={"flex"} justifyContent={"flex-end"}>
                   <ExportComponent />
@@ -54,7 +54,7 @@ const DashboardComponent = () => {
                 <SideBarComponent />
               </Grid>
             </Grid>
-          </div>
+          </Grid>
         </Grid>
       ) : (
         <Spinner />

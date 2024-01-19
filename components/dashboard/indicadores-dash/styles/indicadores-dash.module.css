@@ -62,3 +62,19 @@
   opacity: 0.5;
   margin: 0;
 }
+.indicadtorYearActually {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eb3535;
+  width: 15px;
+  height: 15px;
+}
+.indicadtorNextYear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7a35eb;
+  width: 15px;
+  height: 15px;
+}

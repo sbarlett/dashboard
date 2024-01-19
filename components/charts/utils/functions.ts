@@ -23,6 +23,10 @@ export function getValueTransaccion(
     ? getOperations(data, selectDate, day)
         ?.map((item: any) => item.totalAmountTransactions)
         .slice(0, 6)
+    : selectDate === "YTD/YTG"
+    ? getOperations(data, selectDate, day)
+        ?.map((item: any) => item.totalAmountTransactions)
+        .slice(0, 1)
     : selectDate === "1A" || selectDate === "MAX"
     ? getOperations(data, selectDate, day)
         ?.map((item: any) => item.totalAmountTransactions)
@@ -71,6 +75,8 @@ export function getValueAllData(
     ? getOperations(data, selectDate).slice(0, 31)
     : selectDate === "6M"
     ? getOperations(data, selectDate, day).slice(0, 6)
+    : selectDate === "YTD/YTG"
+    ? getOperations(data, selectDate).slice(0,1)
     : selectDate === "1A" || selectDate === "MAX"
     ? getOperations(data, selectDate).slice(0, 12)
     : [{}];
@@ -92,6 +98,8 @@ export const getOperations = (
       return findOperationActuallyMonth(data);
     case "6M":
       return findOperationsSixMonths(data);
+    case "YTD/YTG":
+      return data;
     case "1A":
       return data;
     case "MAX":

@@ -1,9 +1,6 @@
 import { getDaysActuallyMonth } from "@/components/charts/utils/functions";
-import { transsaction } from "./mock";
 import { RenderedInfo, Transaction } from "./types";
-import React from "react";
 import axios from "axios";
-import { useQuery } from "react-query";
 
 export const listButtonsSideBar = [
   {
@@ -197,7 +194,6 @@ export const months: string[] = [
   "Diciembre",
 ];
 
-
 export const normalizeFilterDates = (date: string) => {
   const map = new Map();
   const fallBack = "hoy";
@@ -205,6 +201,7 @@ export const normalizeFilterDates = (date: string) => {
   map.set("Este mes", "EsteMes");
   map.set("7D", "7D");
   map.set("6 M", "6M");
+  map.set("YTD/YTG", "YTD/YTG");
   map.set("1A", "1A");
   map.set("MAX", "MAX");
   map.set(null, fallBack);
@@ -338,17 +335,24 @@ function obtenerInformacionRenderizada(
   return informacionRenderizada;
 }
 
-
-
-export const asyncFetchApi = async (path:string) => {
-    return await axios(path)
-      .then((res) => {
-        return { error: null, data: res.data };
-      })
-      .catch((error) => {
-        return { error: error, data: null };
-      });
+export const asyncFetchApi = async (path: string) => {
+  return await axios(path)
+    .then((res) => {
+      return { error: null, data: res.data };
+    })
+    .catch((error) => {
+      return { error: error, data: null };
+    });
 };
 
 
-
+  export const filterAndAccumulateByYear = (data,year) => {
+    return data
+      .filter((dato) => {
+        const operationDate = new Date(dato?.date);
+        return operationDate.getFullYear() === year;
+      })
+      .reduce((accumulated, dato) => {
+        return accumulated + dato.totalAmountTransactions || 0;
+      }, 0);
+  };

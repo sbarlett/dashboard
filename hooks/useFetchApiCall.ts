@@ -3,7 +3,7 @@ import { DataOperation } from "@/utils/types";
 import { useQuery } from "react-query";
 
 export function useFetchApiCall(): DataOperation {
-  const apiKey = "https://api-serveless-vercel-jqryn2hrn-sbaletta23.vercel.app/api/data";
+  const apiKey = "https://api-serveless-vercel.vercel.app/api/data";
   const {
     data = [],
     isError,
