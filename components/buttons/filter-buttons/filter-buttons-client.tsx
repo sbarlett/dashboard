@@ -1,8 +1,8 @@
 import React from "react";
 import ButtonFilter from "../button-filter";
-import { listButtonClient1, listButtonClient2 } from "@/utils/functions";
-import { useDashboardContext } from "@/store/global";
 import styles from "../styles/filter-buttons-client.module.css";
+import { listButtonClient1, listButtonClient2 } from "../../../utils/functions";
+import { useDashboardContext } from "../../../store/global";
 
 const FilterButtonsClient = () => {
   const [isFocusedButton, setFocusedButton] = React.useState<string | null>(
@@ -10,7 +10,7 @@ const FilterButtonsClient = () => {
   );
   const { updateSelectedClient } = useDashboardContext();
 
-  const handleClick = (btt) => {
+  const handleClick = (btt: any) => {
     if (btt.button1) {
       setFocusedButton(btt.button1);
       updateSelectedClient(btt.button1);

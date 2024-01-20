@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import DashboardComponent from "@/components/dashboard/dashboard";
 import WrapperContainer from "@/components/layout/layout";

@@ -1,7 +1,8 @@
 import React from "react";
+import { ArrowProps } from "@/utils/types";
 
-const ArrowBack = ({ onClick }) => {
-  return (
+const ArrowBack = ({ onClick }: ArrowProps) => {
+return (
     <svg
       onClick={onClick}
       xmlns="http://www.w3.org/2000/svg"

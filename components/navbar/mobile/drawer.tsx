@@ -1,11 +1,9 @@
 import React from "react";
 import Drawer from "@material-ui/core/Drawer";
-import withStyles from "@material-ui/core/styles/withStyles";
-import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-import { listButtons } from "@/utils/functions";
 import { useRouter } from "next/router";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { List, ListItem, ListItemText } from "@material-ui/core";
+import { listButtons } from "@/utils/functions";
 import { ButtonsPropNav, DrawerComponentProps } from "@/utils/types";
 
 const styles = (_theme) => ({
@@ -14,6 +12,14 @@ const styles = (_theme) => ({
   },
   fullList: {
     width: "auto",
+  },
+  text: {
+    color: "#644bba",
+    fontWeight: 600,
+  },
+  listContainer: {
+    marginTop: "20px",
+    marginLeft: "10px",
   },
 });
 
@@ -33,13 +39,11 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
       onClick={toggleDrawerHandler}
       onKeyDown={toggleDrawerHandler}
     >
-      <List>
+      <List className={classes.listContainer}>
         {listButtons.map((item: ButtonsPropNav, index) => (
           <ListItem button key={index}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
             <ListItemText
+              className={classes.text}
               primary={item.title}
               onClick={() => handleClick(item)}
             />

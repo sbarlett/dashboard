@@ -8,7 +8,7 @@ const ButtonUser = () => {
       <div>
         <p className={styles.textUser}>Santiago Barletta</p>
       </div>
-      <ArrowTop onClick={() => {}} />
+      <ArrowTop />
     </div>
   );
 };

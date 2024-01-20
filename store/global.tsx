@@ -1,6 +1,5 @@
-// DashboardContext.js
-import { DashboardContextType } from "@/utils/types";
 import React from "react";
+import { DashboardContextType } from "../utils/types";
 
 const DashboardContext = React.createContext<DashboardContextType | null>(null);
 
@@ -8,7 +7,8 @@ const DashboardProvider = ({ children }: any) => {
   const [selectedDate, setSelectedDate] = React.useState<string>("hoy");
   const [selectedDay, setSelectedDay] = React.useState<string>("Todo");
   const [selectedGrafic, setSelectedGrafic] = React.useState<string>("Gráfico");
-  const [selectedClient, setSelectedClient] = React.useState<string>("Clientes");
+  const [selectedClient, setSelectedClient] =
+    React.useState<string>("Clientes");
 
   const updateSelectedDate = (date: string) => {
     setSelectedDate(date);
@@ -34,7 +34,7 @@ const DashboardProvider = ({ children }: any) => {
     updateSelectedDate,
     updateSelectedClient,
     updateSelectedGrafic,
-    updateSelectedDay
+    updateSelectedDay,
   };
 
   return (

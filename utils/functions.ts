@@ -1,6 +1,6 @@
-import { getDaysActuallyMonth } from "@/components/charts/utils/functions";
 import { RenderedInfo, Transaction } from "./types";
 import axios from "axios";
+import { getDaysActuallyMonth } from "../components/charts/utils/functions";
 
 export const listButtonsSideBar = [
   {
@@ -345,14 +345,13 @@ export const asyncFetchApi = async (path: string) => {
     });
 };
 
-
-  export const filterAndAccumulateByYear = (data,year) => {
-    return data
-      .filter((dato) => {
-        const operationDate = new Date(dato?.date);
-        return operationDate.getFullYear() === year;
-      })
-      .reduce((accumulated, dato) => {
-        return accumulated + dato.totalAmountTransactions || 0;
-      }, 0);
-  };
+export const filterAndAccumulateByYear = (data, year) => {
+  return data
+    .filter((dato) => {
+      const operationDate = new Date(dato?.date);
+      return operationDate.getFullYear() === year;
+    })
+    .reduce((accumulated, dato) => {
+      return accumulated + dato.totalAmountTransactions || 0;
+    }, 0);
+};

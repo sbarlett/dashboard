@@ -1,11 +1,8 @@
 import React from "react";
-import { useDashboardContext } from "@/store/global";
-import { list7DiasButton } from "@/utils/functions";
 import ButtonFilter from "../button-filter";
-import { ButtonsProp } from '../../../utils/types';
-
-
-
+import { ButtonsProp } from "../../../utils/types";
+import { list7DiasButton } from "../../../utils/functions";
+import { useDashboardContext } from "../../../store/global";
 
 const FilterButtons7D = () => {
   const { selectedDate, selectedGrafic, updateSelectedDay } =

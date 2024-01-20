@@ -1,11 +1,10 @@
 import React, { FC } from "react";
 import styles from "../styles/sidebar-buttons.module.css";
-
-import GraphicVioleta from "@/components/assets/graphic-violet";
-import StartViolet from "@/components/assets/star-violet";
-import GraphicWhite from "@/components/assets/graphic-white";
-import StarWhite from "@/components/assets/star-white";
-import { SideBarButtonsProps } from "@/utils/types";
+import { SideBarButtonsProps } from '../../../utils/types';
+import GraphicVioleta from '../../assets/graphic-violet';
+import GraphicWhite from '../../assets/graphic-white';
+import StartViolet from '../../assets/star-violet';
+import StarWhite from '../../assets/star-white';
 
 const SideBarButtons: FC<SideBarButtonsProps> = ({
   onClick,

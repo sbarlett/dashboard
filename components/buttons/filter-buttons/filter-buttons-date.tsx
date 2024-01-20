@@ -1,11 +1,10 @@
 import React from "react";
 import { filterListButtons, normalizeFilterDates } from "@/utils/functions";
 import ButtonFilter from "../button-filter";
-import { useDashboardContext } from "@/store/global";
-
+import { useDashboardContext } from "../../../store/global";
+import { ButtonsProp } from '../../../utils/types';
+import AssetEye from '../../assets/asset-eye';
 import styles from "../styles/filter-buttons-date.module.css";
-import { ButtonsProp } from "@/utils/types";
-import AssetEye from "@/components/assets/asset-eye";
 
 const FilterButtonsDate = () => {
   const { updateSelectedDate } = useDashboardContext();

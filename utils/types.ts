@@ -86,3 +86,7 @@ export interface DataOperation {
   isError: boolean;
   isLoading: boolean;
 }
+
+export interface ArrowProps {
+  onClick?: MouseEventHandler<SVGSVGElement>
+}

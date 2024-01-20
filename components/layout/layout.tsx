@@ -1,7 +1,7 @@
 import React from "react";
-import MenuNavBar from "../navbar/navbar";
 import useIsMobile from "@/hooks/useMobile";
 import NavMobile from "../navbar/mobile/nav-mobile";
+import DesktopNavBar from "../navbar/desktop/desktop-navbar";
 import styles from "./styles/layout.module.css";
 
 function WrapperContainer({ children }: { children: any }) {
@@ -10,7 +10,7 @@ function WrapperContainer({ children }: { children: any }) {
   return (
     <div className={styles.fullContainer}>
       <div className={isMobile ? styles.layoutContainer: null}>
-        {isMobile ? <NavMobile /> : <MenuNavBar />}
+        {isMobile ? <NavMobile /> : <DesktopNavBar/>}
         {children}
       </div>
     </div>

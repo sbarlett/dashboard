@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles/button-filter.module.css";
 import Tilde from "../assets/tilde";
 import Calendario from "../assets/calendario";
-import { ButtonProps } from "@/utils/types";
+import { ButtonProps } from "../../utils/types";
 
 const ButtonFilter: React.FC<ButtonProps> = ({
   title,
@@ -10,7 +10,7 @@ const ButtonFilter: React.FC<ButtonProps> = ({
   isFocused,
   isClientButton,
 }: ButtonProps) => {
-  const buttons = ['Clientes' , 'Transacciones' , 'Dinero' , 'Cashback']
+  const buttons = ["Clientes", "Transacciones", "Dinero", "Cashback"];
   return (
     <div className={styles.container} onClick={onClick}>
       <div
@@ -23,9 +23,7 @@ const ButtonFilter: React.FC<ButtonProps> = ({
         }
       >
         <div className={styles.thirdContainer}>
-          {isFocused && buttons.includes(title) && (
-            <Tilde />
-          )}
+          {isFocused && buttons.includes(title) && <Tilde />}
           {title === "Personalizado" && <Calendario />}
           <p className={styles.textButton}>{title}</p>
         </div>

@@ -7,9 +7,9 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
-import { buttonsDateMobile, normalizeFilterDates } from "@/utils/functions";
+import { useDashboardContext } from "../../../store/global";
 import styles from "../styles/filter-buttons-mobile.module.css";
-import { useDashboardContext } from "@/store/global";
+import { buttonsDateMobile, normalizeFilterDates } from '../../../utils/functions';
 
 export default function ButtonsDataMobile() {
   const { updateSelectedDate } = useDashboardContext();
@@ -17,7 +17,9 @@ export default function ButtonsDataMobile() {
   const anchorRef = React.useRef<HTMLButtonElement>(null);
   const [isFocused, setFocused] = React.useState<string | null>(null);
   const [textField, settextField] = React.useState<string>("HOY");
+  const prevOpen = React.useRef(open);
 
+  
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -44,7 +46,6 @@ export default function ButtonsDataMobile() {
     }
   }
 
-  const prevOpen = React.useRef(open);
 
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {

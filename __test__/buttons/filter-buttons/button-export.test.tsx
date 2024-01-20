@@ -1,12 +1,14 @@
+// ExportButton.test.js
+import React from "react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import { render } from "@testing-library/react";
 import ExportButton from "../../../components/buttons/filter-buttons/button-export";
 
-describe("ExportButton", () => {
+test("ButtonExport test", () => {
   const wrapper = render(<ExportButton />);
-  wrapper.debug();
-  it("Component render fine", () => {
-    expect(wrapper).toBeTruthy();
-    // expect(wrapper).toHaveTextContent('Exportar tabla')
-  });
+  const exportIcon = screen.getByTestId("export-icon");
+
+  expect(wrapper).toBeTruthy();
+  expect(screen.getByText("Exportar tabla")).toBeInTheDocument();
+  expect(exportIcon).toBeInTheDocument();
 });

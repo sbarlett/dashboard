@@ -1,7 +1,8 @@
 .userContainer {
   display: flex;
   width: 320px;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-right: 16px;
   align-items: center;
   gap: 5px;
   flex-shrink: 0;
