@@ -1,6 +1,6 @@
 import React from "react";
 
-const IconGraficoWhite = () => {
+const GraphicWhite = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,4 +17,4 @@ const IconGraficoWhite = () => {
   );
 };
 
-export default IconGraficoWhite;
+export default GraphicWhite;

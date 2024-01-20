@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles/sidebar.module.css";
 import SideBarButtons from "../buttons/sidebar/sidebar-buttons";
 import TargetsSideBarComponent from "./targets/targets-sidebar";
-import IconArrowSideBar from "../icons/arrow-navbar";
+import ArrowBack from "../assets/arrow-back";
 import { useDashboardContext } from "@/store/global";
 import {
   listButtonsSideBar,
@@ -53,10 +53,10 @@ const SideBarComponent = () => {
           </div>
           {isTarget ? (
             <div className={styles.arrow}>
-              <IconArrowSideBar onClick={handleTarget} />
+              <ArrowBack onClick={handleTarget} />
             </div>
           ) : (
-            <IconArrowSideBar onClick={handleTarget} />
+            <ArrowBack onClick={handleTarget} />
           )}
         </div>
       )}

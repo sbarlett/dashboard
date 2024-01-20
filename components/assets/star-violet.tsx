@@ -1,6 +1,6 @@
 import React from "react";
 
-const IconPulsoVioleta = () => {
+const StartViolet = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,4 +17,4 @@ const IconPulsoVioleta = () => {
   );
 };
 
-export default IconPulsoVioleta;
+export default StartViolet;

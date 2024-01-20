@@ -1,6 +1,6 @@
 import React from "react";
 
-const IconGraficoVioleta = () => {
+const GraphicVioleta = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,4 +17,4 @@ const IconGraficoVioleta = () => {
   );
 };
 
-export default IconGraficoVioleta;
+export default GraphicVioleta;

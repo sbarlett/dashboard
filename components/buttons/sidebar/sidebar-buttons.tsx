@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import styles from "../styles/sidebar-buttons.module.css";
 
-import IconGraficoVioleta from "@/components/icons/grafico-violet";
-import IconPulsoVioleta from "@/components/icons/star-violet";
-import IconGraficoWhite from "@/components/icons/grafico-white";
-import IconStarWhite from "@/components/icons/star-white";
+import GraphicVioleta from "@/components/assets/graphic-violet";
+import StartViolet from "@/components/assets/star-violet";
+import GraphicWhite from "@/components/assets/graphic-white";
+import StarWhite from "@/components/assets/star-white";
 import { SideBarButtonsProps } from "@/utils/types";
 
 const SideBarButtons: FC<SideBarButtonsProps> = ({
@@ -17,10 +17,10 @@ const SideBarButtons: FC<SideBarButtonsProps> = ({
       className={isFocus ? styles.buttonFocus : styles.buttonNotFocus}
       onClick={onClick}
     >
-      {text === "Gráfico" && !isFocus && <IconGraficoVioleta />}
-      {text === "Gráfico" && isFocus && <IconGraficoWhite />}
-      {text === "Pulso" && !isFocus && <IconPulsoVioleta />}
-      {text === "Pulso" && isFocus && <IconStarWhite />}
+      {text === "Gráfico" && !isFocus && <GraphicVioleta />}
+      {text === "Gráfico" && isFocus && <GraphicWhite />}
+      {text === "Pulso" && !isFocus && <StartViolet />}
+      {text === "Pulso" && isFocus && <StarWhite />}
       <p className={isFocus ? styles.textButton : styles.textButtonNotFocus}>
         {text}
       </p>

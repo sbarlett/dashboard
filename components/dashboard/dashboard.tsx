@@ -10,11 +10,11 @@ import ClientTable from "../table/table";
 import { useFetchApiCall } from "@/hooks/useFetchApiCall";
 import Spinner from "../spinner/spinner";
 import Indicators from "./indicadores-dash/indicadores-dash";
-import { transsaction } from "@/utils/mock";
 
 const DashboardComponent = () => {
   const isMobile = useIsMobile();
   const { data, isLoading } = useFetchApiCall();
+
   return (
     <>
       {!isLoading ? (
@@ -40,7 +40,7 @@ const DashboardComponent = () => {
                   flexDirection={"column"}
                   marginTop={!isMobile && "30px"}
                 >
-                  <ChartComponent data={transsaction} />
+                  <ChartComponent data={data?.data} />
                   <Indicators />
                 </Grid>
                 <Grid item display={"flex"} justifyContent={"flex-end"}>

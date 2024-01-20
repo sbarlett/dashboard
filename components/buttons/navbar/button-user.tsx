@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../styles/button-user.module.css";
-import ArrowTop from "../../icons/arrow-top";
+import ArrowTop from "../../assets/arrow-top";
 
 const ButtonUser = () => {
   return (

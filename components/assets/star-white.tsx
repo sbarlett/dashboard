@@ -1,6 +1,6 @@
 import React from "react";
 
-const IconStarWhite = () => {
+const StarWhite = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,4 +17,4 @@ const IconStarWhite = () => {
   );
 };
 
-export default IconStarWhite;
+export default StarWhite;

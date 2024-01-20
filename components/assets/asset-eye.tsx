@@ -1,6 +1,6 @@
 import React from "react";
 
-const EyeIcon = () => {
+const AssetEye = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,4 +17,4 @@ const EyeIcon = () => {
   );
 };
 
-export default EyeIcon;
+export default AssetEye;

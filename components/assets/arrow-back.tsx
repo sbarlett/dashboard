@@ -1,6 +1,6 @@
 import React from "react";
 
-const IconArrowSideBar = ({ onClick }) => {
+const ArrowBack = ({ onClick }) => {
   return (
     <svg
       onClick={onClick}
@@ -20,4 +20,4 @@ const IconArrowSideBar = ({ onClick }) => {
   );
 };
 
-export default IconArrowSideBar;
+export default ArrowBack;

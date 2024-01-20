@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles/button-filter.module.css";
-import Tilde from "../icons/tilde";
-import Calendario from "../icons/calendario";
+import Tilde from "../assets/tilde";
+import Calendario from "../assets/calendario";
 import { ButtonProps } from "@/utils/types";
 
 const ButtonFilter: React.FC<ButtonProps> = ({

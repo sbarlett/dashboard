@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "../styles/button-export.module.css";
-import IconExport from "@/components/icons/export";
+import Export from "@/components/assets/export";
 
 const ExportComponent = () => {
   return (
     <div className={styles.verDetallesContainer}>
-      <IconExport />
+      <Export />
       <p className={styles.textVerDetalles}>Exportar tabla</p>
     </div>
   );
