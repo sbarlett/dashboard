@@ -4,7 +4,7 @@ import styles from "./styles/dashboard.module.css";
 import ChartComponent from "../charts/charts";
 import ButtonsWrapper from "./buttons-wrapper/buttons-wrapper";
 import SideBarComponent from "../sidebar/sidebar";
-import ExportComponent from "../buttons/filter-buttons/button-export";
+import ExportButton from "../buttons/filter-buttons/button-export";
 import useIsMobile from "@/hooks/useMobile";
 import ClientTable from "../table/table";
 import { useFetchApiCall } from "@/hooks/useFetchApiCall";
@@ -44,7 +44,7 @@ const DashboardComponent = () => {
                   <Indicators />
                 </Grid>
                 <Grid item display={"flex"} justifyContent={"flex-end"}>
-                  <ExportComponent />
+                  <ExportButton />
                 </Grid>
                 <Grid item display={"flex"} marginTop={"30px"}>
                   <ClientTable />

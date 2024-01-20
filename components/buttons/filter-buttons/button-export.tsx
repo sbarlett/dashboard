@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "../styles/button-export.module.css";
-import Export from "@/components/assets/export";
+import Export from '../../assets/export';
 
-const ExportComponent = () => {
+
+const ExportButton = () => {
   return (
     <div className={styles.verDetallesContainer}>
       <Export />
@@ -11,4 +12,4 @@ const ExportComponent = () => {
   );
 };
 
-export default ExportComponent;
+export default ExportButton;
