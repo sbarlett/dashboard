@@ -1,4 +1,4 @@
-# [Dashboard Puntos Point](https://sbarlett-dashboard.vercel.app/)
+# [Dashboard Puntospoint](https://sbarlett-dashboard.vercel.app/)
 
 Este dashboard fue creado con React, NextJS y Typescript, implementando el diseño de escritorio del Figma. Para simular un backend y tener información para renderizar en el Dashboard, cree una Vercel Serverless Function.
 
