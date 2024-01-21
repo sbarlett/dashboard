@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
@@ -8,7 +8,11 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
 import { useDashboardContext } from "../../../store/global";
-import { buttonsDateMobile, normalizeFilterDates } from '../../../utils/functions';
+import { eventGTM } from "../../gtm/functions/gtm-function";
+import {
+  buttonsDateMobile,
+  normalizeFilterDates,
+} from "../../../utils/functions";
 import styles from "../styles/filter-buttons-mobile.module.css";
 
 export default function ButtonsDataMobile() {
@@ -17,44 +21,49 @@ export default function ButtonsDataMobile() {
   const anchorRef = React.useRef<HTMLButtonElement>(null);
   const [isFocused, setFocused] = React.useState<string | null>(null);
   const [textField, settextField] = React.useState<string>("HOY");
+
   const prevOpen = React.useRef(open);
 
-  
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = (event: Event | React.SyntheticEvent, item?: any) => {
+  const handleClose = (e: Event | React.SyntheticEvent, item?: any) => {
     settextField(item?.title);
     setFocused(item?.title);
     updateSelectedDate(normalizeFilterDates(item?.title));
+    eventGTM({
+      action: "search",
+      params: {
+        search_term: `${item.title}`,
+      },
+    });
     if (
       anchorRef.current &&
-      anchorRef.current.contains(event.target as HTMLElement)
+      anchorRef.current.contains(e.target as HTMLElement)
     ) {
       return;
     }
     setOpen(false);
   };
 
-  function handleListKeyDown(event: React.KeyboardEvent) {
-    if (event.key === "Tab") {
-      event.preventDefault();
+  function handleListKeyDown(e: React.KeyboardEvent) {
+    if (e.key === "Tab") {
+      e.preventDefault();
       setOpen(false);
-    } else if (event.key === "Escape") {
+    } else if (e.key === "Escape") {
       setOpen(false);
     }
   }
 
-
-  React.useEffect(() => {
+  useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current!.focus();
     }
     prevOpen.current = open;
   }, [open]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     settextField("HOY");
   }, []);
 

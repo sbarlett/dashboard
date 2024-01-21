@@ -8,6 +8,7 @@ import useIsMobile from "../../hooks/useMobile";
 import { listButtonsSideBar } from "../../utils/functions";
 import { ButtonProps, DataOperationProps } from "../../utils/types";
 import styles from "./styles/sidebar.module.css";
+import { eventGTM } from "../../components/gtm/functions/gtm-function";
 
 const SideBarComponent: React.FC<DataOperationProps> = ({
   data,
@@ -31,6 +32,12 @@ const SideBarComponent: React.FC<DataOperationProps> = ({
   const handleClick = (btt: ButtonProps) => {
     setFocusedButton(btt.title);
     updateSelectedGrafic(btt.title);
+    eventGTM({
+      action: "search",
+      params: {
+        search_term: `${btt.title}`,
+      },
+    });
   };
 
   const handleTarget = () => {

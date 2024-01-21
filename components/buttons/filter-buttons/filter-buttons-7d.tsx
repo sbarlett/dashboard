@@ -3,6 +3,7 @@ import ButtonFilter from "../button-filter";
 import { ButtonsProp } from "../../../utils/types";
 import { list7DiasButton } from "../../../utils/functions";
 import { useDashboardContext } from "../../../store/global";
+import { eventGTM } from "../../gtm/functions/gtm-function";
 
 const FilterButtons7D = () => {
   const { selectedDate, selectedGrafic, updateSelectedDay } =
@@ -14,6 +15,13 @@ const FilterButtons7D = () => {
   const handleClick = (btt: ButtonsProp) => {
     setFocusedButton(btt.title);
     updateSelectedDay(btt.title);
+    eventGTM({
+      action: "search",
+      params: {
+        serch_by: `${selectedDate}`,
+        search_term: `${btt.title}`,
+      },
+    });
   };
 
   const handleKeyPress = (

@@ -8,6 +8,8 @@ import {
   filterListButtons,
   normalizeFilterDates,
 } from "../../../utils/functions";
+import { eventGTM } from "../../gtm/functions/gtm-function";
+
 
 const FilterButtonsDate = () => {
   const { updateSelectedDate } = useDashboardContext();
@@ -24,6 +26,12 @@ const FilterButtonsDate = () => {
   const handleClick = (btt: ButtonsProp) => {
     setFocused(btt.title);
     updateSelectedDate(normalizeFilterDates(btt.title));
+    eventGTM({
+      action: "search",
+      params: {
+        search_term: `${btt.title}`,
+      },
+    });
   };
 
   const handleKeyPress = (

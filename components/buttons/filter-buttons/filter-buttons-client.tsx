@@ -2,8 +2,10 @@ import React, { KeyboardEvent, useEffect } from "react";
 import ButtonFilter from "../button-filter";
 import { listButtonClient1, listButtonClient2 } from "../../../utils/functions";
 import { useDashboardContext } from "../../../store/global";
-import styles from "../styles/filter-buttons-client.module.css";
 import { ButtonItem } from "../../../utils/types";
+import { eventGTM } from "../../gtm/functions/gtm-function";
+
+import styles from "../styles/filter-buttons-client.module.css";
 
 const FilterButtonsClient = () => {
   const { updateSelectedClient } = useDashboardContext();
@@ -23,9 +25,21 @@ const FilterButtonsClient = () => {
     if (btt.button1) {
       setFocusedButton(btt.button1);
       updateSelectedClient(btt.button1);
+      eventGTM({
+        action: "search",
+        params: {
+          search_term: `${btt.button1}`,
+        },
+      });
     } else {
       setFocusedButton(btt.button2);
       updateSelectedClient(btt.button2);
+      eventGTM({
+        action: "search",
+        params: {
+          search_term: `${btt.button2}`,
+        },
+      });
     }
   };
 
