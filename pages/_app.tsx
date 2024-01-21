@@ -10,19 +10,19 @@ import Script from "next/script";
 export default function DesktopWrapper() {
   const queryClient = new QueryClient();
 
-  const GTM_ID = "GTM-PDVW229L";
-  // const GTM_ID = "G-Q8GD0FQS88";
+  // const GTM_ID = "GTM-PDVW229L";
+  const GTM_ID = "G-Q8GD0FQS88";
 
   return (
     <>
       <Head>
         <title>Challenge Puntospoint</title>
         <Script
-          strategy="lazyOnload"
+          strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
         />
 
-        <Script id="google-analytics" strategy="lazyOnload">
+        <Script id="google-analytics" strategy="afterInteractive">
           {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
