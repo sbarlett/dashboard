@@ -1,6 +1,6 @@
-import { asyncFetchApi } from "@/utils/functions";
-import { DataOperation } from "@/utils/types";
 import { useQuery } from "react-query";
+import { DataOperation } from "../utils/types";
+import { asyncFetchApi } from "../utils/functions";
 
 export function useFetchApiCall(): DataOperation {
   const apiKey = "https://api-serveless-vercel.vercel.app/api/data";
@@ -15,4 +15,4 @@ export function useFetchApiCall(): DataOperation {
   });
 
   return { data, isError, isLoading };
-};
+}

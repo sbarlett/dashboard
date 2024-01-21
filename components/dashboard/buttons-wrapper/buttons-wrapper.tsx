@@ -1,16 +1,15 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import FilterButtons7D from "@/components/buttons/filter-buttons/filter-buttons-7d";
-import FilterButtonsClient from "@/components/buttons/filter-buttons/filter-buttons-client";
-import FilterButtonsDate from "@/components/buttons/filter-buttons/filter-buttons-date";
+import { useDashboardContext } from "../../../store/global";
+import { ButtonsProp } from "../../../utils/types";
+import FilterButtonsDate from "../../buttons/filter-buttons/filter-buttons-date";
+import FilterButtons7D from "../../buttons/filter-buttons/filter-buttons-7d";
+import FilterButtonsClient from "../../buttons/filter-buttons/filter-buttons-client";
+import { listButtonsSideBar } from "../../../utils/functions";
+import SideBarButtons from "../../buttons/sidebar/sidebar-buttons";
+import ButtonsDataMobile from "../../buttons/filter-buttons/filter-buttons-mobile";
 import styles from "../styles/dashboard.module.css";
-import useIsMobile from "@/hooks/useMobile";
-import { listButtonsSideBar } from "@/utils/functions";
-import SideBarButtons from "@/components/buttons/sidebar/sidebar-buttons";
-import { useDashboardContext } from "@/store/global";
-import ButtonsDataMobile from "@/components/buttons/filter-buttons/filter-buttons-mobile";
-import { ButtonsProp } from "@/utils/types";
-
+import useIsMobile from '../../../hooks/useMobile';
 
 const ButtonsWrapper = () => {
   const { updateSelectedGrafic } = useDashboardContext();
@@ -33,11 +32,7 @@ const ButtonsWrapper = () => {
           <Grid item className={styles.filterButtons7DContainer}>
             <FilterButtons7D />
           </Grid>
-          <Grid
-            item
-            className={styles.filterClientContainer}
-            style={{ display: "flex" }}
-          >
+          <Grid item className={styles.filterClientContainer}>
             <FilterButtonsClient />
           </Grid>
         </>

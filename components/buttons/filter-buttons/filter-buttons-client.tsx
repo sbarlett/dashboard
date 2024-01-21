@@ -1,16 +1,17 @@
 import React from "react";
 import ButtonFilter from "../button-filter";
-import styles from "../styles/filter-buttons-client.module.css";
 import { listButtonClient1, listButtonClient2 } from "../../../utils/functions";
 import { useDashboardContext } from "../../../store/global";
+import styles from "../styles/filter-buttons-client.module.css";
+import { ButtonItem } from "../../../utils/types";
 
 const FilterButtonsClient = () => {
+  const { updateSelectedClient } = useDashboardContext();
   const [isFocusedButton, setFocusedButton] = React.useState<string | null>(
     null
   );
-  const { updateSelectedClient } = useDashboardContext();
 
-  const handleClick = (btt: any) => {
+  const handleClick = (btt: ButtonItem) => {
     if (btt.button1) {
       setFocusedButton(btt.button1);
       updateSelectedClient(btt.button1);
@@ -32,7 +33,7 @@ const FilterButtonsClient = () => {
   return (
     <>
       <div className={styles.buttonContiner}>
-        {listButtonClient1.map((btt, index) => (
+        {listButtonClient1.map((btt: ButtonItem, index: number) => (
           <ButtonFilter
             key={index}
             title={btt.button1}
@@ -44,7 +45,7 @@ const FilterButtonsClient = () => {
       </div>
 
       <div className={styles.buttonContiner}>
-        {listButtonClient2.map((btt, index) => (
+        {listButtonClient2.map((btt: ButtonItem, index: number) => (
           <ButtonFilter
             key={index}
             title={btt.button2}

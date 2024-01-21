@@ -1,10 +1,10 @@
 import React from "react";
-import Drawer from "@material-ui/core/Drawer";
 import { useRouter } from "next/router";
 import withStyles from "@material-ui/core/styles/withStyles";
+import Drawer from "@material-ui/core/Drawer";
 import { List, ListItem, ListItemText } from "@material-ui/core";
-import { listButtons } from "@/utils/functions";
-import { ButtonsPropNav, DrawerComponentProps } from "@/utils/types";
+import { DrawerComponentProps, ButtonsPropNav } from "../../../utils/types";
+import { listButtons } from "../../../utils/functions";
 
 const styles = (_theme) => ({
   list: {

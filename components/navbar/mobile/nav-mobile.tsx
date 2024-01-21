@@ -5,9 +5,11 @@ import styles from "./styles/nav-mobile.module.css";
 
 const NavMobile = () => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+
   const toggleDrawer = () => {
     setIsDrawerOpen(false);
   };
+  
   const openDrawer = () => {
     setIsDrawerOpen(true);
   };

@@ -1,32 +1,34 @@
 import React from "react";
-import styles from "./styles/sidebar.module.css";
 import SideBarButtons from "../buttons/sidebar/sidebar-buttons";
 import TargetsSideBarComponent from "./targets/targets-sidebar";
 import ArrowBack from "../assets/arrow-back";
-import { useDashboardContext } from "@/store/global";
-import {
-  listButtonsSideBar,
-  operacionesProximosTresMeses,
-} from "@/utils/functions";
-import { transsaction } from "@/utils/mock";
-import useIsMobile from "@/hooks/useMobile";
+import { useDashboardContext } from "../../store/global";
+import { getOperationsNextMonths } from "./utils/functions";
+import useIsMobile from "../../hooks/useMobile";
+import { listButtonsSideBar } from "../../utils/functions";
+import { ButtonProps, DataOperationProps } from "../../utils/types";
+import styles from "./styles/sidebar.module.css";
 
-const SideBarComponent = () => {
+const SideBarComponent: React.FC<DataOperationProps> = ({
+  data,
+}: DataOperationProps) => {
+  const informacionRenderizada = getOperationsNextMonths(data);
+  const isMobile = useIsMobile();
   const { updateSelectedGrafic } = useDashboardContext();
-  const [isTarget, setIsTarget] = React.useState(true);
+  const [isTarget, setIsTarget] = React.useState<boolean>(true);
   const [isFocusedButton, setFocusedButton] = React.useState<string | null>(
     null
   );
+
   React.useEffect(() => {
     const initializeFocus = () => {
       setFocusedButton("Gráfico");
       updateSelectedGrafic("Gráfico");
     };
     initializeFocus();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleClick = (btt) => {
+  const handleClick = (btt: ButtonProps) => {
     setFocusedButton(btt.title);
     updateSelectedGrafic(btt.title);
   };
@@ -35,14 +37,16 @@ const SideBarComponent = () => {
     setIsTarget((prevIsTarget) => !prevIsTarget);
   };
 
-  const informacionRenderizada = operacionesProximosTresMeses(transsaction);
-  const isMobile = useIsMobile();
   return (
-    <div className={!isMobile ? styles.sidebarContainer : styles.sidebarMobileContainer}>
+    <div
+      className={
+        !isMobile ? styles.sidebarContainer : styles.sidebarMobileContainer
+      }
+    >
       {!isMobile && (
         <div className={styles.sidebarButtonContainer}>
           <div className={styles.buttonContainer}>
-            {listButtonsSideBar.map((btt, index) => (
+            {listButtonsSideBar.map((btt: ButtonProps, index: number) => (
               <SideBarButtons
                 key={index}
                 text={btt.title}

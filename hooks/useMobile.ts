@@ -1,17 +1,14 @@
-import React from "react";
-
-interface MediaQuery {
-  matches: boolean;
-}
+import { useState, useEffect } from "react";
+import { MediaQuery } from "../utils/types";
 
 function useIsMobile() {
-  const [mQuery, setMQuery] = React.useState<MediaQuery>({ matches: true });
+  const [mQuery, setMQuery] = useState<MediaQuery>({ matches: true });
 
   const listener = () => {
     setMQuery({ matches: window?.innerWidth < 768 ? true : false });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     try {
       setMQuery({ matches: window?.innerWidth < 768 ? true : false });
       const mql = window?.matchMedia("(min-width: 768px)");

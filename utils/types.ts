@@ -1,5 +1,5 @@
-import { WithStyles } from "@material-ui/core";
 import { KeyboardEvent, MouseEvent, MouseEventHandler } from "react";
+import { WithStyles } from "@material-ui/core";
 
 export interface DashboardContextType {
   selectedDate?: string;
@@ -13,11 +13,12 @@ export interface DashboardContextType {
 }
 
 export interface Transaction {
-  customersBuyByDay: number;
-  totalAmountTransactions: number;
+  customersBuyByDay?: number;
+  dayOperation?: string;
+  monthOperation?: string;
+  operationsDay?: number;
   date: string;
-  dayOperation: string;
-  monthOperation: string;
+  totalAmountTransactions?: number
 }
 
 export interface RenderedInfo {
@@ -43,13 +44,11 @@ export interface DataOperationProps {
 
 export interface ButtonsProp {
   title: string;
-  tag: any;
 }
 
 export interface ButtonsPropNav {
   title: string;
   route: string;
-  tag: any;
 }
 
 export interface ButtonNavBarProps {
@@ -88,5 +87,15 @@ export interface DataOperation {
 }
 
 export interface ArrowProps {
-  onClick?: MouseEventHandler<SVGSVGElement>
+  onClick?: MouseEventHandler<SVGSVGElement>;
+}
+
+export interface ButtonItem {
+  button1?: string;
+  button2?: string;
+}
+
+
+export interface MediaQuery {
+  matches: boolean;
 }

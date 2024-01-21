@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./styles/indicadores-dash.module.css";
-import useIsMobile from "@/hooks/useMobile";
-import { useDashboardContext } from "@/store/global";
+import useIsMobile from "../../../hooks/useMobile";
+import { useDashboardContext } from "../../../store/global";
+import styles from "../styles/dashboard.module.css";
 
 const Indicators = () => {
   const isMobile = useIsMobile();

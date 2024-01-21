@@ -3,7 +3,9 @@ import { DashboardContextType } from "../utils/types";
 
 const DashboardContext = React.createContext<DashboardContextType | null>(null);
 
-const DashboardProvider = ({ children }: any) => {
+const DashboardProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}: any) => {
   const [selectedDate, setSelectedDate] = React.useState<string>("hoy");
   const [selectedDay, setSelectedDay] = React.useState<string>("Todo");
   const [selectedGrafic, setSelectedGrafic] = React.useState<string>("Gráfico");

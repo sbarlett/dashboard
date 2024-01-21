@@ -1,7 +1,5 @@
 import React from "react";
 import { axisClasses } from "@mui/x-charts";
-import { filterAndAccumulateByYear, validateDate } from "@/utils/functions";
-import { useDashboardContext } from "@/store/global";
 import Box from "@mui/material/Box";
 import { ResponsiveChartContainer } from "@mui/x-charts/ResponsiveChartContainer";
 import { LinePlot } from "@mui/x-charts/LineChart";
@@ -13,9 +11,12 @@ import {
   getValueCustomers,
   getValueTransaccion,
 } from "./utils/functions";
-import { DataOperationProps } from "@/utils/types";
 import { Grid } from "@mui/material";
-import useIsMobile from "@/hooks/useMobile";
+import { DataOperationProps } from "../../utils/types";
+import { useDashboardContext } from "../../store/global";
+import useIsMobile from "../../hooks/useMobile";
+import { validateDate } from "../../utils/functions";
+import { filterAndAccumulateByYear } from "./utils/functions";
 
 const ChartComponent: React.FC<DataOperationProps> = ({
   data,

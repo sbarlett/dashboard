@@ -1,60 +1,48 @@
-import { RenderedInfo, Transaction } from "./types";
 import axios from "axios";
 import { getDaysActuallyMonth } from "../components/charts/utils/functions";
 
 export const listButtonsSideBar = [
   {
     title: "Gráfico",
-    tag: "",
   },
   {
     title: "Pulso",
-    tag: "",
   },
 ];
 
 export const listButtons = [
   {
     title: "Dashboard",
-    route: "/home",
-    tag: "",
+    route: "/",
   },
   {
     title: "Clientes",
-    route: "/clientes",
-    tag: "",
+    route: "/",
   },
   {
     title: "Reglas de acumulación",
-    route: "/reglas",
-    tag: "",
+    route: "/",
   },
 ];
 
 export const filterListButtons = [
   {
     title: "HOY",
-    tag: "",
   },
   {
     title: "7D",
-    tag: "",
   },
   {
     title: "Este mes",
-    tag: "",
   },
   {
     title: "6 M",
-    tag: "",
   },
   {
     title: "YTD/YTG",
-    tag: "",
   },
   {
     title: "1A",
-    tag: "",
   },
   {
     title: "MAX",
@@ -90,56 +78,44 @@ export const buttonsDateMobile = [
 export const list7DiasButton = [
   {
     title: "Todo",
-    tag: "",
   },
   {
     title: "Lunes",
-    tag: "",
   },
   {
     title: "Martes",
-    tag: "",
   },
   {
     title: "Miercoles",
-    tag: "",
   },
   {
     title: "Jueves",
-    tag: "",
   },
   {
     title: "Viernes",
-    tag: "",
   },
   {
     title: "Sabado",
-    tag: "",
   },
   {
     title: "Domingo",
-    tag: "",
   },
 ];
 
 export const listButtonClient1 = [
   {
     button1: "Clientes",
-    tag: "",
   },
   {
     button1: "Transacciones",
-    tag: "",
   },
 ];
 export const listButtonClient2 = [
   {
     button2: "Dinero",
-    tag: "",
   },
   {
     button2: "Cashback",
-    tag: "",
   },
 ];
 
@@ -223,7 +199,6 @@ export const normalizeDate = (fullDate: string): string => {
   map.set("Octubre", "10");
   map.set("Noviembre", "11");
   map.set("Diciembre", "12");
-
   const [dia, nombreMes] = fullDate.split(" de ");
   const mesFormateado = map.get(nombreMes) || "";
   return `${dia}/${mesFormateado}`;
@@ -258,83 +233,6 @@ export const validateDate = (type: string) => {
   }
 };
 
-// Obtener operaciones de los proximos 3 meses Cards del SideBar
-export function operacionesProximosTresMeses(data: Array<Transaction>) {
-  const currentDate = new Date();
-  const currentMonth = currentDate.getMonth();
-  const proximosTresMeses = Array.from(
-    { length: 3 },
-    (_, index) => (currentMonth + index) % 12
-  );
-  const operacionesProximosTresMeses = data?.filter((operation) => {
-    const mesOperacion = new Date(operation.date).getMonth();
-    return proximosTresMeses.includes(mesOperacion);
-  });
-
-  return obtenerInformacionRenderizada(operacionesProximosTresMeses);
-}
-
-// Ordenar y acumular datos para las Cards del Sidebar
-function obtenerInformacionRenderizada(
-  data: Array<Transaction>
-): RenderedInfo[] {
-  const informacionRenderizada: RenderedInfo[] = [];
-
-  const mesesUnicos: string[] = Array.from(
-    new Set(data?.map((transaccion) => transaccion.monthOperation))
-  );
-
-  mesesUnicos.forEach((mes) => {
-    const infoMes: any = {
-      mes,
-      acumulado: {
-        clientesTotal: 0,
-        ventasTotales: 0,
-        montoTotal: 0,
-      },
-      facturacion: [], // Inicializar el array factu como un array vacío
-    };
-
-    const fechasUnicas = new Set(); // Utilizar un Set para rastrear fechas únicas
-
-    // Filtrar transacciones correspondientes al mes actual
-    const transaccionesMes = data?.filter(
-      (transaccion) => transaccion.monthOperation === mes
-    );
-
-    // Iterar sobre las transacciones del mes y actualizar la información
-    transaccionesMes.forEach((transaccion) => {
-      infoMes.acumulado.clientesTotal += transaccion.customersBuyByDay;
-      infoMes.acumulado.ventasTotales += transaccion.totalAmountTransactions;
-      infoMes.acumulado.montoTotal += transaccion.totalAmountTransactions;
-
-      if (transaccion.totalAmountTransactions > 0) {
-        // Obtener la fecha formateada
-        const fechaFormateada = normalizeDate(transaccion.dayOperation);
-
-        // Verificar si la fecha ya está en el conjunto de fechas únicas
-        if (
-          !fechasUnicas.has(fechaFormateada) &&
-          infoMes.facturacion.length < 3
-        ) {
-          // Crear un objeto con la fecha actual
-          const factuItem = {
-            fecha: fechaFormateada,
-            ventas: transaccion.totalAmountTransactions,
-          };
-          // Agregar el objeto al array factu y al conjunto de fechas únicas
-          infoMes.facturacion.push(factuItem);
-          fechasUnicas.add(fechaFormateada);
-        }
-      }
-    });
-
-    informacionRenderizada.push(infoMes);
-  });
-
-  return informacionRenderizada;
-}
-
 export const asyncFetchApi = async (path: string) => {
   return await axios(path)
     .then((res) => {
@@ -343,15 +241,4 @@ export const asyncFetchApi = async (path: string) => {
     .catch((error) => {
       return { error: error, data: null };
     });
-};
-
-export const filterAndAccumulateByYear = (data, year) => {
-  return data
-    .filter((dato) => {
-      const operationDate = new Date(dato?.date);
-      return operationDate.getFullYear() === year;
-    })
-    .reduce((accumulated, dato) => {
-      return accumulated + dato.totalAmountTransactions || 0;
-    }, 0);
 };

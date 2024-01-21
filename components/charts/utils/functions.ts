@@ -1,6 +1,5 @@
-import { months, today, weekDays } from "@/utils/functions";
-import { transsaction } from "@/utils/mock";
-import { Transaction } from "@/utils/types";
+import { Transaction } from "../../../utils/types";
+import { months, today, weekDays } from "../../../utils/functions";
 
 export function getValueTransaccion(
   data: Array<Transaction>,
@@ -76,19 +75,34 @@ export function getValueAllData(
     : selectDate === "6M"
     ? getOperations(data, selectDate, day).slice(0, 6)
     : selectDate === "YTD/YTG"
-    ? getOperations(data, selectDate).slice(0,1)
+    ? getOperations(data, selectDate).slice(0, 1)
     : selectDate === "1A" || selectDate === "MAX"
     ? getOperations(data, selectDate).slice(0, 12)
     : [{}];
 }
 
-const operationsNextSevenDays = findOperations7D(transsaction);
+export function getDaysActuallyMonth() {
+  const diasEnString = [];
+  const today = new Date();
+  const mesActual = today.getMonth();
+  const ultimoDiaMes = new Date(
+    today.getFullYear(),
+    mesActual + 1,
+    0
+  ).getDate();
+  for (let i = 1; i <= ultimoDiaMes; i++) {
+    const diaEnString = `${i} de ${months[mesActual]}`;
+    diasEnString.push(diaEnString);
+  }
+  return diasEnString;
+}
 
 export const getOperations = (
   data: Array<Transaction>,
   type?: string,
   day?: string
 ) => {
+  const operationsNextSevenDays = findOperations7D(data);
   switch (type) {
     case "hoy":
       return findOperationByDay(data);
@@ -115,11 +129,11 @@ function findOperationByDay(data: Array<Transaction>) {
 
 function findOperations7D(data: Array<Transaction>) {
   const today = new Date();
-  today.setHours(0, 0, 0, 0); // Establece la hora a 00:00:00:00 para comparaciones de fecha
+  today.setHours(0, 0, 0, 0);
 
   const next7Days = new Date();
   next7Days.setDate(today.getDate() + 7);
-  next7Days.setHours(0, 0, 0, 0); // Establece la hora a 00:00:00:00 para comparaciones de fecha
+  next7Days.setHours(0, 0, 0, 0);
 
   return data?.filter((transaction) => {
     const transactionDate = new Date(transaction.date);
@@ -162,8 +176,6 @@ function findOperationsSixMonths(data: Array<Transaction>) {
   return data?.filter((transaction) => {
     const fechaTransaccion = new Date(transaction.date);
     const hoy = new Date();
-
-    // Calcula la fecha límite para los próximos 6 meses
     const limiteFecha = new Date();
     limiteFecha.setMonth(hoy.getMonth() + 5);
 
@@ -171,18 +183,13 @@ function findOperationsSixMonths(data: Array<Transaction>) {
   });
 }
 
-export function getDaysActuallyMonth() {
-  const diasEnString = [];
-  const today = new Date();
-  const mesActual = today.getMonth();
-  const ultimoDiaMes = new Date(
-    today.getFullYear(),
-    mesActual + 1,
-    0
-  ).getDate();
-  for (let i = 1; i <= ultimoDiaMes; i++) {
-    const diaEnString = `${i} de ${months[mesActual]}`;
-    diasEnString.push(diaEnString);
-  }
-  return diasEnString;
-}
+export const filterAndAccumulateByYear = (data: Array<Transaction>, year) => {
+  return data
+    .filter((dato) => {
+      const operationDate = new Date(dato?.date);
+      return operationDate.getFullYear() === year;
+    })
+    .reduce((accumulated, dato) => {
+      return accumulated + dato.totalAmountTransactions || 0;
+    }, 0);
+};
