@@ -55,12 +55,16 @@ export interface ButtonNavBarProps {
   textButton: string;
   isFocused: boolean;
   onClick: MouseEventHandler<HTMLDivElement>;
+  onKeyPress?: React.KeyboardEventHandler;
+  tabIndex?: number
 }
 
 export interface SideBarButtonsProps {
   onClick: MouseEventHandler<HTMLDivElement>;
   isFocus: boolean;
   text: string;
+  onKeyPress?: React.KeyboardEventHandler;
+  tabIndex?: number
 }
 
 export interface ButtonProps {
@@ -70,6 +74,8 @@ export interface ButtonProps {
   asset?: boolean;
   isClientButton?: boolean;
   key?: number;
+  onKeyPress?: React.KeyboardEventHandler;
+  tabIndex?: number
 }
 export interface DrawerComponentProps extends WithStyles {
   left: boolean;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { KeyboardEvent, useEffect } from "react";
 import ButtonFilter from "../button-filter";
 import { useDashboardContext } from "../../../store/global";
 import { ButtonsProp } from "../../../utils/types";
@@ -13,18 +13,27 @@ const FilterButtonsDate = () => {
   const { updateSelectedDate } = useDashboardContext();
   const [isFocused, setFocused] = React.useState<string | null>(null);
 
-  const handleClick = (btt: ButtonsProp) => {
-    setFocused(btt.title);
-    updateSelectedDate(normalizeFilterDates(btt.title));
-  };
-
-  React.useEffect(() => {
+  useEffect(() => {
     const initializeFocus = () => {
       setFocused("HOY");
       updateSelectedDate(normalizeFilterDates("HOY"));
     };
     initializeFocus();
   }, []);
+
+  const handleClick = (btt: ButtonsProp) => {
+    setFocused(btt.title);
+    updateSelectedDate(normalizeFilterDates(btt.title));
+  };
+
+  const handleKeyPress = (
+    event: KeyboardEvent<HTMLDivElement>,
+    btt: ButtonsProp
+  ) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleClick(btt);
+    }
+  };
 
   return (
     <>
@@ -35,6 +44,10 @@ const FilterButtonsDate = () => {
             title={btt.title}
             onClick={() => handleClick(btt)}
             isFocused={isFocused === btt.title}
+            onKeyPress={(event: KeyboardEvent<HTMLDivElement>) =>
+              handleKeyPress(event, btt)
+            }
+            tabIndex={0}
           />
         ))}
       </div>

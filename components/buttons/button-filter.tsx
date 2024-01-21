@@ -9,10 +9,12 @@ const ButtonFilter: React.FC<ButtonProps> = ({
   onClick,
   isFocused,
   isClientButton,
+  onKeyPress,
+  tabIndex
 }: ButtonProps) => {
   const buttons = ["Clientes", "Transacciones", "Dinero", "Cashback"];
   return (
-    <div className={styles.container} onClick={onClick}>
+    <div className={styles.container} onClick={onClick} onKeyPress={onKeyPress}>
       <div
         className={
           isFocused
@@ -21,8 +23,9 @@ const ButtonFilter: React.FC<ButtonProps> = ({
             ? styles.clientContainerNotFocus
             : styles.secontContainerNotFocus
         }
+        
       >
-        <div className={styles.thirdContainer}>
+        <div className={styles.thirdContainer} tabIndex={tabIndex}>
           {isFocused && buttons.includes(title) && <Tilde />}
           {title === "Personalizado" && <Calendario />}
           <p className={styles.textButton}>{title}</p>

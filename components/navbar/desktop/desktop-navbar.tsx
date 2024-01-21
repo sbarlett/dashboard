@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { KeyboardEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import ButtonNavBar from "../../buttons/navbar/button-navbar";
 import ButtonUser from "../../buttons/navbar/button-user";
@@ -12,13 +12,24 @@ const DesktopNavBar = () => {
 
   useEffect(() => {
     const currentPath = router.pathname;
-    const currentButton = listButtons?.find((btt) => currentPath.startsWith(btt.route));
+    const currentButton = listButtons?.find((btt) =>
+      currentPath.startsWith(btt.route)
+    );
     setFocusedButton(currentButton?.title || listButtons[0].title);
   }, [router.pathname]);
 
   const handleClick = (btt: ButtonsPropNav) => {
     setFocusedButton(btt.title);
     router.push(btt.route);
+  };
+
+  const handleKeyPress = (
+    event: KeyboardEvent<HTMLDivElement>,
+    btt: ButtonsPropNav
+  ) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleClick(btt);
+    }
   };
 
   return (
@@ -31,6 +42,10 @@ const DesktopNavBar = () => {
               textButton={btt.title}
               onClick={() => handleClick(btt)}
               isFocused={focusedButton === btt.title}
+              onKeyPress={(event: KeyboardEvent<HTMLDivElement>) =>
+                handleKeyPress(event, btt)
+              }
+              tabIndex={0}
             />
           ))}
         </div>

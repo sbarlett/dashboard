@@ -1,4 +1,4 @@
-import React from "react";
+import React, { KeyboardEvent, useEffect } from "react";
 import ButtonFilter from "../button-filter";
 import { listButtonClient1, listButtonClient2 } from "../../../utils/functions";
 import { useDashboardContext } from "../../../store/global";
@@ -11,6 +11,14 @@ const FilterButtonsClient = () => {
     null
   );
 
+  useEffect(() => {
+    const initializeFocus = () => {
+      setFocusedButton("Clientes");
+      updateSelectedClient("Clientes");
+    };
+    initializeFocus();
+  }, []);
+
   const handleClick = (btt: ButtonItem) => {
     if (btt.button1) {
       setFocusedButton(btt.button1);
@@ -21,14 +29,14 @@ const FilterButtonsClient = () => {
     }
   };
 
-  React.useEffect(() => {
-    const initializeFocus = () => {
-      setFocusedButton("Clientes");
-      updateSelectedClient("Clientes");
-    };
-    initializeFocus();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const handleKeyPress = (
+    event: KeyboardEvent<HTMLDivElement>,
+    btt: ButtonItem
+  ) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleClick(btt);
+    }
+  };
 
   return (
     <>
@@ -40,6 +48,10 @@ const FilterButtonsClient = () => {
             onClick={() => handleClick(btt)}
             isFocused={isFocusedButton === btt.button1}
             isClientButton={isFocusedButton !== btt.button1}
+            onKeyPress={(event: KeyboardEvent<HTMLDivElement>) =>
+              handleKeyPress(event, btt)
+            }
+            tabIndex={0}
           />
         ))}
       </div>
@@ -52,6 +64,10 @@ const FilterButtonsClient = () => {
             onClick={() => handleClick(btt)}
             isFocused={isFocusedButton === btt.button2}
             isClientButton={isFocusedButton !== btt.button2}
+            onKeyPress={(event: KeyboardEvent<HTMLDivElement>) =>
+              handleKeyPress(event, btt)
+            }
+            tabIndex={0}
           />
         ))}
       </div>

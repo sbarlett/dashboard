@@ -1,4 +1,4 @@
-import React from "react";
+import React, { KeyboardEvent } from "react";
 import ButtonFilter from "../button-filter";
 import { ButtonsProp } from "../../../utils/types";
 import { list7DiasButton } from "../../../utils/functions";
@@ -16,6 +16,15 @@ const FilterButtons7D = () => {
     updateSelectedDay(btt.title);
   };
 
+  const handleKeyPress = (
+    event: KeyboardEvent<HTMLDivElement>,
+    btt: ButtonsProp
+  ) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleClick(btt);
+    }
+  };
+
   return (
     <>
       {selectedDate === "7D" && selectedGrafic !== "Pulso" && (
@@ -26,6 +35,10 @@ const FilterButtons7D = () => {
               title={btt.title}
               onClick={() => handleClick(btt)}
               isFocused={isFocusedButton === btt.title}
+              onKeyPress={(event: KeyboardEvent<HTMLDivElement>) =>
+                handleKeyPress(event, btt)
+              }
+              tabIndex={0}
             />
           ))}
         </>

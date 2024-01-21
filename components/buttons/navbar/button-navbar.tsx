@@ -7,11 +7,15 @@ const ButtonNavBar: FC<ButtonNavBarProps> = ({
   textButton,
   isFocused,
   onClick,
+  onKeyPress,
+  tabIndex
 }) => {
   return (
     <div
       className={isFocused ? styles.containerButton : styles.notFocus}
       onClick={onClick}
+      onKeyPress={onKeyPress}
+      tabIndex={tabIndex}
     >
       <div className={styles.textContainer}>
         <p

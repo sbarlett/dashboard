@@ -1,4 +1,4 @@
-import React from "react";
+import React, { KeyboardEvent, useEffect } from "react";
 import SideBarButtons from "../buttons/sidebar/sidebar-buttons";
 import TargetsSideBarComponent from "./targets/targets-sidebar";
 import ArrowBack from "../assets/arrow-back";
@@ -20,7 +20,7 @@ const SideBarComponent: React.FC<DataOperationProps> = ({
     null
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     const initializeFocus = () => {
       setFocusedButton("Gráfico");
       updateSelectedGrafic("Gráfico");
@@ -35,6 +35,15 @@ const SideBarComponent: React.FC<DataOperationProps> = ({
 
   const handleTarget = () => {
     setIsTarget((prevIsTarget) => !prevIsTarget);
+  };
+
+  const handleKeyPress = (
+    event: KeyboardEvent<HTMLDivElement>,
+    btt: ButtonProps
+  ) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleClick(btt);
+    }
   };
 
   return (
@@ -52,6 +61,10 @@ const SideBarComponent: React.FC<DataOperationProps> = ({
                 text={btt.title}
                 onClick={() => handleClick(btt)}
                 isFocus={isFocusedButton === btt.title}
+                onKeyPress={(event: KeyboardEvent<HTMLDivElement>) =>
+                  handleKeyPress(event, btt)
+                }
+                tabIndex={0}
               />
             ))}
           </div>

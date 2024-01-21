@@ -10,11 +10,15 @@ const SideBarButtons: FC<SideBarButtonsProps> = ({
   onClick,
   isFocus,
   text,
+  onKeyPress,
+  tabIndex
 }) => {
   return (
     <div
       className={isFocus ? styles.buttonFocus : styles.buttonNotFocus}
       onClick={onClick}
+      onKeyPress={onKeyPress}
+      tabIndex={tabIndex}
     >
       {text === "Gráfico" && !isFocus && <GraphicVioleta />}
       {text === "Gráfico" && isFocus && <GraphicWhite />}
