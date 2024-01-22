@@ -33,7 +33,9 @@ $ npm run dev
 
 ## Google Analytics
 
-Se utilizo Google Analytis para taguear las vistas y los botones que filtran el dashboard.
+- Utiliza la aplicación y realiza clics en los botones de filtrado que deseen probar.
+- Luego deben abrir la consola del navegador y ejecutar el comando dataLayer para confirmar que se hayan registrado eventos.
+- Luego ingresar al enlace de abajo y dentro del informe de comportamiento podran visualizar los eventos realizados
 
 ## Enlaces
 
