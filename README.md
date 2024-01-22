@@ -34,7 +34,7 @@ $ npm run dev
 ## Google Analytics
 
 - Utiliza la aplicación y realiza clics en los botones de filtrado que deseen probar.
-- Abre la consola del navegador y ejecuta el comando dataLayer para confirmar que se hayan registrado eventos.
+- Luego deben abrir la consola del navegador y ejecutar el comando dataLayer para confirmar que se hayan registrado eventos.
 - Luego ingresar al enlace de abajo y dentro del informe de comportamiento podran visualizar los eventos realizados
 
 ## Enlaces
