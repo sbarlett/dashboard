@@ -1,0 +1,21 @@
+name: deployment prod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_pipe:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install
+        run: npm Install
+      - name: Lint
+        run: npm run eslint
