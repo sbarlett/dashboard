@@ -1,5 +1,4 @@
 import { KeyboardEvent, MouseEvent, MouseEventHandler } from "react";
-import { WithStyles } from "@material-ui/core";
 
 export interface DashboardContextType {
   selectedDate?: string;
@@ -77,9 +76,10 @@ export interface ButtonProps {
   onKeyPress?: React.KeyboardEventHandler;
   tabIndex?: number
 }
-export interface DrawerComponentProps extends WithStyles {
-  left: boolean;
-  toggleDrawerHandler: (event: KeyboardEvent | MouseEvent) => void;
+export interface DrawerComponentProps {
+  left?: boolean;
+  toggleDrawerHandler?: (event: KeyboardEvent | MouseEvent) => void;
+  classes?: any
 }
 
 export interface ToolbarComponentProps {

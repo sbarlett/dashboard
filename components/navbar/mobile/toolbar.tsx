@@ -1,9 +1,9 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import { ToolbarComponentProps } from "@/utils/types";
+import AppBar from "@mui/material/AppBar";
+import { Toolbar } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from '@mui/icons-material/Menu';
+import { ToolbarComponentProps } from '../../../utils/types';
 import styles from "./styles/toolbar.module.css";
 
 const ToolbarComponent: React.FC<ToolbarComponentProps> = ({
