@@ -19,6 +19,7 @@ const FilterButtonsClient = () => {
       updateSelectedClient("Clientes");
     };
     initializeFocus();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClick = (btt: ButtonItem) => {
