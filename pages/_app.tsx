@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import CssBaseline from "@mui/material/CssBaseline";
-import DashboardComponent from "@/components/dashboard/dashboard";
-import WrapperContainer from "@/components/layout/layout";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { DashboardProvider } from "@/store/global";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { QueryClient, QueryClientProvider } from "react-query";
+import CssBaseline from "@mui/material/CssBaseline";
+import { DashboardProvider } from "../store/global";
+import WrapperContainer from "../components/layout/layout";
+import DashboardComponent from "../components/dashboard/dashboard";
 import { pageviewGTM } from "../components/gtm/functions/gtm-function";
 import GtmScript from "../components/gtm/GtmScript";
 
@@ -41,7 +41,4 @@ export default function DesktopWrapper() {
       </React.Fragment>
     </>
   );
-}
-function useReportWebVitals(arg0: (metric: any) => void) {
-  throw new Error("Function not implemented.");
 }
