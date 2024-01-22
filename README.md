@@ -30,3 +30,11 @@ $ npm i
 $ npm run dev 
 ```
 <br >
+
+## Google Analytics
+
+Se utilizo Google Analytis para taguear las vistas y los botones que filtran el dashboard.
+
+## Enlaces
+
+- **Informe del comportamiento:** [Google Analytics](https://analytics.google.com/analytics/web/#/p424192479/realtime/overview?params=_u..nav%3Dmaui&collectionId=user)
