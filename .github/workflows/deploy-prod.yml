@@ -1,0 +1,15 @@
+name: Pipeline prod
+
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  config_pipe:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Corriendo Pipeline
+        run: |
+          echo "Deploy prod"
