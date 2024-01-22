@@ -1,10 +1,10 @@
 import React from "react";
 import { useRouter } from "next/router";
-import withStyles from "@material-ui/core/styles/withStyles";
-import Drawer from "@material-ui/core/Drawer";
-import { List, ListItem, ListItemText } from "@material-ui/core";
-import { DrawerComponentProps, ButtonsPropNav } from "../../../utils/types";
 import { listButtons } from "../../../utils/functions";
+import { List, ListItemButton, ListItemText } from "@mui/material";
+import Drawer from '@mui/material/Drawer';
+import { withStyles } from '@mui/styles';
+import { DrawerComponentProps, ButtonsPropNav } from "../../../utils/types";
 
 const styles = (_theme) => ({
   list: {
@@ -41,13 +41,13 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
     >
       <List className={classes.listContainer}>
         {listButtons.map((item: ButtonsPropNav, index) => (
-          <ListItem button key={index}>
+          <ListItemButton key={index}>
             <ListItemText
               className={classes.text}
               primary={item.title}
               onClick={() => handleClick(item)}
             />
-          </ListItem>
+          </ListItemButton>
         ))}
       </List>
     </div>

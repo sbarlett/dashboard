@@ -1,5 +1,4 @@
 import { KeyboardEvent, MouseEvent, MouseEventHandler } from "react";
-import { WithStyles } from "@material-ui/core";
 
 export interface DashboardContextType {
   selectedDate?: string;
@@ -18,7 +17,7 @@ export interface Transaction {
   monthOperation?: string;
   operationsDay?: number;
   date: string;
-  totalAmountTransactions?: number
+  totalAmountTransactions?: number;
 }
 
 export interface RenderedInfo {
@@ -56,7 +55,7 @@ export interface ButtonNavBarProps {
   isFocused: boolean;
   onClick: MouseEventHandler<HTMLDivElement>;
   onKeyPress?: React.KeyboardEventHandler;
-  tabIndex?: number
+  tabIndex?: number;
 }
 
 export interface SideBarButtonsProps {
@@ -64,7 +63,7 @@ export interface SideBarButtonsProps {
   isFocus: boolean;
   text: string;
   onKeyPress?: React.KeyboardEventHandler;
-  tabIndex?: number
+  tabIndex?: number;
 }
 
 export interface ButtonProps {
@@ -75,11 +74,12 @@ export interface ButtonProps {
   isClientButton?: boolean;
   key?: number;
   onKeyPress?: React.KeyboardEventHandler;
-  tabIndex?: number
+  tabIndex?: number;
 }
-export interface DrawerComponentProps extends WithStyles {
-  left: boolean;
-  toggleDrawerHandler: (event: KeyboardEvent | MouseEvent) => void;
+export interface DrawerComponentProps {
+  left?: boolean;
+  classes?: any;
+  toggleDrawerHandler?: (event: KeyboardEvent | MouseEvent) => void;
 }
 
 export interface ToolbarComponentProps {
@@ -100,7 +100,6 @@ export interface ButtonItem {
   button1?: string;
   button2?: string;
 }
-
 
 export interface MediaQuery {
   matches: boolean;
