@@ -46,33 +46,26 @@ export const filterListButtons = [
   },
   {
     title: "MAX",
-    tag: "",
   },
   {
     title: "Personalizado",
-    tag: "",
   },
 ];
 export const buttonsDateMobile = [
   {
     title: "HOY",
-    tag: "",
   },
   {
     title: "7D",
-    tag: "",
   },
   {
     title: "Este mes",
-    tag: "",
   },
   {
     title: "6 M",
-    tag: "",
   },
   {
     title: "MAX",
-    tag: "",
   },
 ];
 export const list7DiasButton = [
