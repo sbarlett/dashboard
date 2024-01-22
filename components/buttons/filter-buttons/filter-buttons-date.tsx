@@ -21,6 +21,7 @@ const FilterButtonsDate = () => {
       updateSelectedDate(normalizeFilterDates("HOY"));
     };
     initializeFocus();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClick = (btt: ButtonsProp) => {
