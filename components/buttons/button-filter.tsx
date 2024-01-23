@@ -10,7 +10,7 @@ const ButtonFilter: React.FC<ButtonProps> = ({
   isFocused,
   isClientButton,
   onKeyPress,
-  tabIndex
+  tabIndex,
 }: ButtonProps) => {
   const buttons = ["Clientes", "Transacciones", "Dinero", "Cashback"];
   return (
@@ -23,7 +23,6 @@ const ButtonFilter: React.FC<ButtonProps> = ({
             ? styles.clientContainerNotFocus
             : styles.secontContainerNotFocus
         }
-        
       >
         <div className={styles.thirdContainer} tabIndex={tabIndex}>
           {isFocused && buttons.includes(title) && <Tilde />}

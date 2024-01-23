@@ -1,7 +1,5 @@
 import React from "react";
-import { ArrowProps } from '../../utils/types';
-
-
+import { ArrowProps } from "../../utils/types";
 
 const ArrowTop = ({ onClick }: ArrowProps) => {
   return (

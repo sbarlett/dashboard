@@ -9,7 +9,7 @@ const NavMobile = () => {
   const toggleDrawer = () => {
     setIsDrawerOpen(false);
   };
-  
+
   const openDrawer = () => {
     setIsDrawerOpen(true);
   };
