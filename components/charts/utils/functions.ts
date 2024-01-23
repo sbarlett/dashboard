@@ -69,15 +69,15 @@ export function getValueAllData(
   return selectDate === "hoy"
     ? getOperations(data, selectDate, day)
     : selectDate === "7D"
-    ? getOperations(data, selectDate, day).slice(0, 7)
+    ? acumulateDataForDays(data, selectDate, day)
     : selectDate === "EsteMes"
-    ? getOperations(data, selectDate).slice(0, 31)
+    ? acumulateDataForDays(data, selectDate, day)
     : selectDate === "6M"
-    ? getOperations(data, selectDate, day).slice(0, 6)
+    ? acumulateDataForMonths(data, selectDate)
     : selectDate === "YTD/YTG"
     ? getOperations(data, selectDate).slice(0, 1)
     : selectDate === "1A" || selectDate === "MAX"
-    ? getOperations(data, selectDate).slice(0, 12)
+    ? acumulateDataForMonths(data, selectDate)
     : [{}];
 }
 
@@ -193,3 +193,65 @@ export const filterAndAccumulateByYear = (data: Array<Transaction>, year) => {
       return accumulated + dato.totalAmountTransactions || 0;
     }, 0);
 };
+
+export function acumulateDataForDays(
+  data: Array<Transaction>,
+  selectDate: string,
+  day: string
+) {
+  const res = getOperations(data, selectDate, day)?.reduce(
+    (accumulator, currentValue: any) => {
+      const dayOperation = currentValue?.dayOperation;
+
+      if (!accumulator[dayOperation]) {
+        accumulator[dayOperation] = {
+          customersBuyByDay: 0,
+          totalAmountTransactions: 0,
+          operationsDay: 0,
+          dayOperation,
+        };
+      }
+
+      accumulator[dayOperation].customersBuyByDay +=
+        currentValue.customersBuyByDay;
+      accumulator[dayOperation].totalAmountTransactions +=
+        currentValue.totalAmountTransactions;
+      accumulator[dayOperation].operationsDay += currentValue.operationsDay;
+
+      return accumulator;
+    },
+    {}
+  );
+  return Object.values(res);
+}
+
+export function acumulateDataForMonths(
+  data: Array<Transaction>,
+  selectDate: string,
+  day?: string
+) {
+  const res = getOperations(data, selectDate, day).reduce(
+    (accumulator, currentValue: any) => {
+      const monthOperation = currentValue.monthOperation;
+
+      if (!accumulator[monthOperation]) {
+        accumulator[monthOperation] = {
+          customersBuyByDay: 0,
+          totalAmountTransactions: 0,
+          operationsDay: 0,
+          monthOperation,
+        };
+      }
+
+      accumulator[monthOperation].customersBuyByDay +=
+        currentValue.customersBuyByDay;
+      accumulator[monthOperation].totalAmountTransactions +=
+        currentValue.totalAmountTransactions;
+      accumulator[monthOperation].operationsDay += currentValue.operationsDay;
+
+      return accumulator;
+    },
+    {}
+  );
+  return Object.values(res);
+}
