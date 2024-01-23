@@ -1,8 +1,6 @@
 import { RenderedInfo, Transaction } from "../../../utils/types";
 import { normalizeDate } from "../../../utils/functions";
 
-
-
 export function getOperationsNextMonths(data: Array<Transaction>) {
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth();
@@ -18,10 +16,7 @@ export function getOperationsNextMonths(data: Array<Transaction>) {
   return getDataCardsSideBar(operacionesProximosTresMeses);
 }
 
-
-function getDataCardsSideBar(
-  data: Array<Transaction>
-): RenderedInfo[] {
+function getDataCardsSideBar(data: Array<Transaction>): RenderedInfo[] {
   const informacionRenderizada: RenderedInfo[] = [];
 
   const mesesUnicos: string[] = Array.from(

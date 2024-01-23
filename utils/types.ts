@@ -11,6 +11,12 @@ export interface DashboardContextType {
   updateSelectedDay?: (selec: string) => void;
 }
 
+export interface RenderedInfo {
+  mes: string;
+  acumulado: AccumulatedData;
+  facturado: FacturationData[];
+}
+
 export interface Transaction {
   customersBuyByDay?: number;
   dayOperation?: string;
@@ -110,12 +116,12 @@ interface Acumulado {
   montoTotal: number;
 }
 
-interface RenderedInfo {
-  mes: string;
-  acumulado: Acumulado;
-  facturacion: FacturacionItem[];
+interface RenderedSideBar {
+  mes?: string;
+  acumulado?: Acumulado;
+  facturacion?: FacturacionItem[];
 }
 
 export interface TargetSideBarProps {
-  data?: RenderedInfo;
+  data?: RenderedSideBar;
 }
