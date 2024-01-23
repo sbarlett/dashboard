@@ -9,7 +9,7 @@ import { listButtonsSideBar } from "../../../utils/functions";
 import SideBarButtons from "../../buttons/sidebar/sidebar-buttons";
 import ButtonsDataMobile from "../../buttons/filter-buttons/filter-buttons-mobile";
 import styles from "../styles/dashboard.module.css";
-import useIsMobile from '../../../hooks/useMobile';
+import useIsMobile from "../../../hooks/useMobile";
 
 const ButtonsWrapper = () => {
   const { updateSelectedGrafic } = useDashboardContext();

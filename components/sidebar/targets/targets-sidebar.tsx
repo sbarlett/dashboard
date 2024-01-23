@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "../styles/targets-sidebar.module.css";
+import { TargetSideBarProps } from "../../../utils/types";
 
-const TargetsSideBarComponent = ({ data }) => {
+const TargetsSideBarComponent = ({ data }: TargetSideBarProps) => {
   function formatearNumero(numero: number) {
     return numero.toLocaleString("es-ES");
   }
@@ -9,7 +10,7 @@ const TargetsSideBarComponent = ({ data }) => {
   const calcularCashBack = () => {
     return data.acumulado.montoTotal * 0.3;
   };
-  
+
   const renderInfoTarget = (titulo, valor) => (
     <div className={styles.clientDatos}>
       <p>{titulo}</p>

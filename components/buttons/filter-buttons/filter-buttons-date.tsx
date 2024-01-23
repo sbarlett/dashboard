@@ -10,7 +10,6 @@ import {
 } from "../../../utils/functions";
 import { eventGTM } from "../../gtm/functions/gtm-function";
 
-
 const FilterButtonsDate = () => {
   const { updateSelectedDate } = useDashboardContext();
   const [isFocused, setFocused] = React.useState<string | null>(null);
@@ -21,7 +20,7 @@ const FilterButtonsDate = () => {
       updateSelectedDate(normalizeFilterDates("HOY"));
     };
     initializeFocus();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClick = (btt: ButtonsProp) => {

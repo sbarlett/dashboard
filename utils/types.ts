@@ -20,12 +20,6 @@ export interface Transaction {
   totalAmountTransactions?: number;
 }
 
-export interface RenderedInfo {
-  mes: string;
-  acumulado: AccumulatedData;
-  facturado: FacturationData[];
-}
-
 export interface AccumulatedData {
   clientesTotal: number;
   ventasTotales: number;
@@ -103,4 +97,25 @@ export interface ButtonItem {
 
 export interface MediaQuery {
   matches: boolean;
+}
+
+interface FacturacionItem {
+  fecha: string;
+  ventas: number;
+}
+
+interface Acumulado {
+  clientesTotal: number;
+  ventasTotales: number;
+  montoTotal: number;
+}
+
+interface RenderedInfo {
+  mes: string;
+  acumulado: Acumulado;
+  facturacion: FacturacionItem[];
+}
+
+export interface TargetSideBarProps {
+  data?: RenderedInfo;
 }
