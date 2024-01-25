@@ -39,4 +39,4 @@ $ npm run dev
 
 ## Enlaces
 
-- **Informe del comportamiento:** [Google Analytics](https://analytics.google.com/analytics/web/#/p424192479/realtime/overview?params=_u..nav%3Dmaui&collectionId=user)
+- **Informe del comportamiento:** [Google Analytics](https://analytics.google.com/analytics/web/#/p424192479/reports/intelligenthome?params=_u..nav%3Dmaui&collectionId=user)
