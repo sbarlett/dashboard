@@ -14,7 +14,11 @@ const ButtonFilter: React.FC<ButtonProps> = ({
 }: ButtonProps) => {
   const buttons = ["Clientes", "Transacciones", "Dinero", "Cashback"];
   return (
-    <div className={styles.container} onClick={onClick} onKeyPress={onKeyPress}>
+    <div
+      className={styles.container}
+      onClick={title !== "Personalizado" ? onClick : undefined}
+      onKeyPress={onKeyPress}
+    >
       <div
         className={
           isFocused
