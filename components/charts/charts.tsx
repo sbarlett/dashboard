@@ -47,7 +47,6 @@ const ChartComponent: React.FC<DataOperationProps> = ({
                   { id: "totalAmountTransactions" },
                   { id: "customersBuyByDay" },
                 ]}
-                dataset={getValueAllData(data, selectedDate, selectedDay)}
                 series={[
                   {
                     type: "line",
@@ -101,11 +100,6 @@ const ChartComponent: React.FC<DataOperationProps> = ({
                           },
                         ]}
                         yAxis={[{ id: "totalAmountTransactions" }]}
-                        dataset={getValueAllData(
-                          data,
-                          selectedDate,
-                          selectedDay
-                        ).slice(0, 1)}
                         series={[
                           {
                             type: "bar",
@@ -179,11 +173,6 @@ const ChartComponent: React.FC<DataOperationProps> = ({
                         },
                       ]}
                       yAxis={[{ id: "totalAmountTransactions" }]}
-                      dataset={getValueAllData(
-                        data,
-                        selectedDate,
-                        selectedDay
-                      ).slice(0, 1)}
                       series={[
                         {
                           type: "bar",
@@ -265,7 +254,6 @@ const ChartComponent: React.FC<DataOperationProps> = ({
                     { id: "totalAmountTransactions" },
                     { id: "customersBuyByDay" },
                   ]}
-                  dataset={getValueAllData(data, selectedDate, selectedDay)}
                   series={[
                     {
                       type: "line",
@@ -344,7 +332,6 @@ const ChartComponent: React.FC<DataOperationProps> = ({
                   { id: "totalAmountTransactions" },
                   { id: "customersBuyByDay" },
                 ]}
-                dataset={getValueAllData(data, selectedDate, selectedDay)}
                 series={[
                   {
                     type: "line",
@@ -420,7 +407,6 @@ const ChartComponent: React.FC<DataOperationProps> = ({
                   },
                 ]}
                 yAxis={[{ id: "totalAmountTransactions" }]}
-                dataset={getValueAllData(data, selectedDate, selectedDay)}
                 series={[
                   {
                     type: "line",
